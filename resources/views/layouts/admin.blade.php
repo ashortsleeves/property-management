@@ -23,8 +23,8 @@
         <li class="menu-item">
           <a class="menu-title" href="#">Properties</a>
           <ul class="submenu">
-            <li><a href="#">All Properties</a></li>
-            <li><a href="#">Add Property</a></li>
+            <li><a href="{{route('property.index')}}">All Properties</a></li>
+            <li><a href="{{route('property.create')}}">Add Property</a></li>
           </ul>
         </li>
         <li class="menu-item">

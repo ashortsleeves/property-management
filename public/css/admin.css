@@ -218,3 +218,7 @@ ul.sidebar li.menu-item.active ul.submenu li a:focus {
   background-color: #efefef;
 }
 
+form .form-hidden {
+  display: none;
+}
+

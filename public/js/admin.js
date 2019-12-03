@@ -102,6 +102,15 @@ $(".menu-item").click(function () {
   $(".menu-item.active").removeClass("active");
   $(this).addClass("active");
 });
+$("#town_id").change(function () {
+  if ($("#town_id option:selected").text() == "New Town") {
+    $('.form-newTown').removeClass('form-hidden');
+  } else {
+    $('.form-newTown').addClass('form-hidden');
+  }
+
+  ;
+});
 
 /***/ }),
 

@@ -9,10 +9,19 @@
         {!!Form::text('address', null, ['class'=>'form-control'])!!}
     </div>
     <div class="form-group">
-      {!!Form::label('town_id', 'Town: ')!!}
-      {!!Form::select('town_id',['' => 'Choose Option'] + $towns, null, ['class'=>'form-control'])!!}
+        {!!Form::label('rent', 'Rent: ')!!}
+        {!!Form::text('rent', null, ['class'=>'form-control'])!!}
     </div>
-        <div class="form-group">
+
+    <div class="form-group">
+      {!!Form::label('town_id', 'Town: ')!!}
+      {!!Form::select('town_id',['' => 'Choose Option'] +  $towns + [$newTownId => 'New Town'], null, ['class'=>'form-control form-towns'])!!}
+    </div>
+    <div class="form-group form-newTown form-hidden">
+      {!!Form::label('town_new', 'New Town: ')!!}
+      {!!Form::text('town_new', null, ['class'=>'form-control'])!!}
+    </div>
+    <div class="form-group">
       {!!Form::submit('Create ', ['class'=>'btn btn-primary'])!!}
     </div>
   {!!Form::close()!!}

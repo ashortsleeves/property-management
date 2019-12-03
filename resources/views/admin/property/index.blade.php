@@ -16,7 +16,8 @@
       @foreach($properties as $property)
         <tr>
           <td>{{$property->id}}</td>
-          <td>{{$property->town_id}}</td>
+          <td>{{$property->address}}</td>
+          <td>{{$property->town->name}}</td>
           <td>{{$property->created_at->diffForHumans()}}</td>
           <td>{{$property->updated_at->diffForHumans()}}</td>
         </tr>
