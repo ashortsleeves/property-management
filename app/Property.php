@@ -9,6 +9,8 @@ class Property extends Model
   protected $fillable = [
     'address',
     'town_id',
+    'state_id',
+    'state',
     'rent'
   ];
 

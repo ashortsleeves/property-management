@@ -7,6 +7,7 @@
       <th>Id</th>
       <th>Street Address</th>
       <th>Town</th>
+      <th>State</th>
       <th>Created At</th>
       <th>Updated At</th>
     </tr>
@@ -18,6 +19,7 @@
           <td>{{$property->id}}</td>
           <td>{{$property->address}}</td>
           <td>{{$property->town->name}}</td>
+          <td>{{$property->state}}</td>
           <td>{{$property->created_at->diffForHumans()}}</td>
           <td>{{$property->updated_at->diffForHumans()}}</td>
         </tr>

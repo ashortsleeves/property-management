@@ -19,8 +19,69 @@ class AdminPropertyController extends Controller
     public function create()
     {
       $towns = Town::pluck('name', 'id')->all();
+
+      $states = array(
+        'Alabama' => 'Alabama',
+        'Alaska' => 'Alaska',
+        'American Samoa' => 'American Samoa',
+        'Arizona' => 'Arizona',
+        'Arkansas' => 'Arkansas',
+        'California' =>'California',
+        'Colorado'=>'Colorado',
+        'Connecticut'=>'Connecticut',
+        'Delaware'=>'Delaware',
+        'District of Columbia'=>'District of Columbia',
+        'Florida'=>'Florida',
+        'Georgia'=>'Georgia',
+        'Guam'=>'Guam',
+        'Hawaii'=>'Hawaii',
+        'Idaho'=>'Idaho',
+        'Illinois'=>'Illinois',
+        'Indiana'=>'Indiana',
+        'Iowa'=>'Iowa',
+        'Kansas'=>'Kansas',
+        'Kentucky'=>'Kentucky',
+        'Louisiana'=>'Louisiana',
+        'Maine'=>'Maine',
+        'Maryland'=>'Maryland',
+        'Massachusetts'=>'Massachusetts',
+        'Michigan'=>'Michigan',
+        'Minnesota'=>'Minnesota',
+        'Minor Outlying Islands'=>'Minor Outlying Islands',
+        'Mississippi'=>'Mississippi',
+        'Missouri'=>'Missouri',
+        'Montana'=>'Montana',
+        'Nebraska'=>'Nebraska',
+        'Nevada'=>'Nevada',
+        'New Hampshire'=>'New Hampshire',
+        'New Jersey'=>'New Jersey',
+        'New Mexico'=>'New Mexico',
+        'New York'=>'New York',
+        'North Carolina'=>'North Carolina',
+        'North Dakota'=>'North Dakota',
+        'Northern Mariana Islands'=>'Northern Mariana Islands',
+        'Ohio'=>'Ohio',
+        'Oklahoma'=>'Oklahoma',
+        'Oregon'=>'Oregon',
+        'Pennsylvania'=>'Pennsylvania',
+        'Puerto Rico'=>'Puerto Rico',
+        'Rhode Island'=>'Rhode Island',
+        'South Carolina'=>'South Carolina',
+        'South Dakota'=>'South Dakota',
+        'Tennessee'=>'Tennessee',
+        'Texas'=>'Texas',
+        'U.S. Virgin Islands'=>'U.S. Virgin Islands',
+        'Utah'=>'Utah',
+        'Vermont'=>'Vermont',
+        'Virginia'=>'Virginia',
+        'Washington'=>'Washington',
+        'West Virginia'=>'West Virginia',
+        'Wisconsin'=>'Wisconsin',
+        'Wyoming'=>'Wyoming'
+      );
+
       $newTownId = rand(1,99999);
-      return view('admin.property.create', compact('towns', 'newTownId'));
+      return view('admin.property.create', compact('towns', 'newTownId', 'states'));
     }
 
     public function store(PropertyCreateRequest $request)

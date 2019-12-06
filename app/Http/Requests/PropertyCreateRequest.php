@@ -27,6 +27,7 @@ class PropertyCreateRequest extends FormRequest
             'address' => 'required',
             'town_id' => 'required',
             'rent'    => 'required',
+            'state'   => 'required',
         ];
     }
 }

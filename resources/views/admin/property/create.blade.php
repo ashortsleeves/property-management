@@ -21,6 +21,11 @@
       {!!Form::label('town_new', 'New Town: ')!!}
       {!!Form::text('town_new', null, ['class'=>'form-control'])!!}
     </div>
+
+    <div class="form-group">
+      {!!Form::label('state', 'State: ')!!}
+      {!!Form::select('state', ['' => 'Choose Option'] + $states, null, ['class'=>'form-control'])!!}
+    </div>
     <div class="form-group">
       {!!Form::submit('Create ', ['class'=>'btn btn-primary'])!!}
     </div>
