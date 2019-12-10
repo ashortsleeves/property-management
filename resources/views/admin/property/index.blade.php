@@ -18,7 +18,7 @@
       @foreach($properties as $property)
         <tr>
           <td>{{$property->id}}</td>
-          <td>{{$property->address}}</td>
+          <td><a href="{{route('home.property', $property->slug)}}" >{{$property->address}}</a></td>
           <td>{{$property->town->name}}</td>
           <td>{{$property->state}}</td>
           <td><a href="{{route('media.show', $property->id)}}">View Photos</a></td>

@@ -111,4 +111,12 @@ class AdminPropertyController extends Controller
 
       return redirect('/admin/property');
     }
+
+    public function property($slug)
+    {
+      $property = Property::findBySlugOrFail($slug);
+      $photos = $property->photos()->get();
+      $town = $property->town()->get();
+      return view('property', compact('property', 'photos', 'town'));
+    }
 }

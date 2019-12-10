@@ -2,10 +2,27 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 
 class Property extends Model
 {
+  use Sluggable;
+  use SluggableScopeHelpers;
+
+
+
+  public function sluggable()
+  {
+      return [
+          'slug' => [
+              'source'   => 'address',
+              'onUpdate' => true
+          ]
+      ];
+  }
+
   protected $fillable = [
     'address',
     'town_id',
