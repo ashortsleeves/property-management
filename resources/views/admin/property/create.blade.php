@@ -1,9 +1,11 @@
 @extends('layouts.admin')
+@section('styles')
 
+@endsection
 @section('content')
   <h1>Property Create</h1>
 
-  {!! Form::open(['method'=>'POST', 'action'=> 'AdminPropertyController@store', 'files'=>true])!!}
+  {!! Form::open(['method'=>'POST', 'action'=> 'AdminPropertyController@store', 'files'=>true, 'class'=>"dropzone"])!!}
     <div class="form-group">
         {!!Form::label('address', 'Address: ')!!}
         {!!Form::text('address', null, ['class'=>'form-control'])!!}
@@ -26,10 +28,14 @@
     </div>
     <div class="form-group">
       {!!Form::label('file', 'File: ')!!}
-      {!!Form::file('file', null, ['class'=>'form-control'])!!}
+
+      <input name="media[]" type="file" id="media" multiple>
     </div>
     <div class="form-group">
       {!!Form::submit('Create ', ['class'=>'btn btn-primary'])!!}
     </div>
   {!!Form::close()!!}
+@endsection
+
+@section('scripts')
 @endsection

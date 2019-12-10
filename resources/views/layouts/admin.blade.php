@@ -8,6 +8,7 @@
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
     <link href="{{asset('css/all.min.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,700&display=swap" rel="stylesheet">
+    @yield('styles')
   </head>
   <body>
     <header>
@@ -58,6 +59,6 @@
 
     <script src="{{asset('js/jquery.js')}}"></script>
     <script src="{{asset('js/admin.js')}}"></script>
-
+    @yield('scripts')
   </body>
 </html>

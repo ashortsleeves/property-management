@@ -98,13 +98,15 @@ class AdminPropertyController extends Controller
 
       $newProp = Property::create($input);
 
-      if($file = $request->file('file')) {
-        $name = time() . $file->getClientOriginalName();
-        $file->move('images', $name);
-        $photo = Photo::create([
-          'file'        => $name,
-          'property_id' => $newProp->id
-        ]);
+      if($request->file('media')) {
+        foreach($request->file('media') as $media) {
+          $name = time() . $media->getClientOriginalName();
+          $media->move('images', $name);
+          $photo = Photo::create([
+            'file'        => $name,
+            'property_id' => $newProp->id
+          ]);
+        }
       }
 
       return redirect('/admin/property');
