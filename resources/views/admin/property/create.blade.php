@@ -3,16 +3,11 @@
 @section('content')
   <h1>Property Create</h1>
 
-  {!! Form::open(['method'=>'POST', 'action'=> 'AdminPropertyController@store'])!!}
+  {!! Form::open(['method'=>'POST', 'action'=> 'AdminPropertyController@store', 'files'=>true])!!}
     <div class="form-group">
         {!!Form::label('address', 'Address: ')!!}
         {!!Form::text('address', null, ['class'=>'form-control'])!!}
     </div>
-    <div class="form-group">
-        {!!Form::label('rent', 'Rent: ')!!}
-        {!!Form::text('rent', null, ['class'=>'form-control'])!!}
-    </div>
-
     <div class="form-group">
       {!!Form::label('town_id', 'Town: ')!!}
       {!!Form::select('town_id',['' => 'Choose Option'] +  $towns + [$newTownId => 'New Town'], null, ['class'=>'form-control form-towns'])!!}
@@ -21,10 +16,17 @@
       {!!Form::label('town_new', 'New Town: ')!!}
       {!!Form::text('town_new', null, ['class'=>'form-control'])!!}
     </div>
-
     <div class="form-group">
       {!!Form::label('state', 'State: ')!!}
       {!!Form::select('state', ['' => 'Choose Option'] + $states, null, ['class'=>'form-control'])!!}
+    </div>
+    <div class="form-group">
+        {!!Form::label('rent', 'Rent: ')!!}
+        {!!Form::text('rent', null, ['class'=>'form-control'])!!}
+    </div>
+    <div class="form-group">
+      {!!Form::label('file', 'File: ')!!}
+      {!!Form::file('file', null, ['class'=>'form-control'])!!}
     </div>
     <div class="form-group">
       {!!Form::submit('Create ', ['class'=>'btn btn-primary'])!!}

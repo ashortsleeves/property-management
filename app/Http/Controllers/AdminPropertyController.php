@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Property;
 use App\Town;
+use App\Photo;
 use App\Http\Requests\PropertyCreateRequest;
 
 class AdminPropertyController extends Controller
@@ -93,9 +94,18 @@ class AdminPropertyController extends Controller
           'id'    => $request->input('town_id'),
           'name'  => $request->input('town_new')
         ]);
-
       }
-      Property::create($input);
+
+      $newProp = Property::create($input);
+
+      if($file = $request->file('file')) {
+        $name = time() . $file->getClientOriginalName();
+        $file->move('images', $name);
+        $photo = Photo::create([
+          'file'        => $name,
+          'property_id' => $newProp->id
+        ]);
+      }
 
       return redirect('/admin/property');
     }

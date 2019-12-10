@@ -8,6 +8,7 @@
       <th>Street Address</th>
       <th>Town</th>
       <th>State</th>
+      <th>Photos</th>
       <th>Created At</th>
       <th>Updated At</th>
     </tr>
@@ -20,6 +21,7 @@
           <td>{{$property->address}}</td>
           <td>{{$property->town->name}}</td>
           <td>{{$property->state}}</td>
+          <td><a href="{{route('media.show', $property->id)}}">View Photos</a></td>
           <td>{{$property->created_at->diffForHumans()}}</td>
           <td>{{$property->updated_at->diffForHumans()}}</td>
         </tr>

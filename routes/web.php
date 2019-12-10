@@ -28,4 +28,5 @@ Route::group(['middleware'=>'admin'], function(){
   Route::resource('/admin/property', 'AdminPropertyController');
   Route::resource('/admin/town', 'AdminTownController');
   Route::resource('/admin/users', 'AdminUsersController');
+  Route::resource('/admin/media', 'AdminMediaController');
 });

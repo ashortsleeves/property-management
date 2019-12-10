@@ -37,8 +37,8 @@
         <li class="menu-item">
           <a class="menu-title" href="#">Images</a>
           <ul class="submenu">
-            <li><a href="#">All Images</a></li>
-            <li><a href="#">Add Images</a></li>
+            <li><a href="{{route('media.index')}}">All Images</a></li>
+            <li><a href="{{route('media.create')}}">Add Images</a></li>
           </ul>
         </li>
         <li class="menu-item">

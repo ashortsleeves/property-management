@@ -11,10 +11,14 @@ class Property extends Model
     'town_id',
     'state_id',
     'state',
-    'rent'
+    'rent',
   ];
 
   public function town() {
     return $this->belongsTo('App\Town');
+  }
+
+  public function photos() {
+    return $this->hasMany('App\Photo');
   }
 }
