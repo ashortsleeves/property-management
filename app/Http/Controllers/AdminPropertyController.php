@@ -117,6 +117,13 @@ class AdminPropertyController extends Controller
       $property = Property::findBySlugOrFail($slug);
       $photos = $property->photos()->get();
       $town = $property->town()->get();
-      return view('property', compact('property', 'photos', 'town'));
+      return view('public.property.property', compact('property', 'photos', 'town'));
+    }
+
+    public function properties()
+    {
+      $properties = Property::all();
+
+      return view('public.property.properties', compact('properties'));
     }
 }
