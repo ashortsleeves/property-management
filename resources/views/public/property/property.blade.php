@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+  <a href="{{route('home.properties')}}">Back to all Properties</a>
   <ul>
     <li>${{$property->rent}}/month</li>
     <li>{{$property->address}}</li>
