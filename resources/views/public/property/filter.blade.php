@@ -1,6 +1,6 @@
 <form action="{{route('home.properties')}}">
-  <div class="row">
-    <div class="col-md-4">
+  <div>
+    <div>
       <h3>Search for Property</h3>
       <input class="form-control form-control-sm" type="search" name="q" value="{{ $q }}">
     </div>

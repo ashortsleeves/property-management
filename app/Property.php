@@ -53,5 +53,4 @@ class Property extends Model
             ->orWhere('rent', 'LIKE', "%{$q}%")
             ->orWhere('state', 'LIKE', "%{$q}%");
   }
-
 }
