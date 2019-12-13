@@ -136,22 +136,22 @@ class AdminPropertyController extends Controller
 
     public function properties(Request $request)
     {
+      $towns   = Town::all();
       $sortBy  = 'id';
       $orderBy = 'desc';
       $perPage = 20;
       $q       = null;
-
+      $t       = $towns->pluck('id')->toArray();
 
       if($request->has('orderBy')) $orderBy = $request->query('orderBy');
       if($request->has('sortBy')) $sortBy = $request->query('sortBy');
       if($request->has('perPage')) $perPage = $request->query('perPage');
       if($request->has('q')) $q = $request->query('q');
+      if($request->has('t')) $t = $request->get('t');
 
-      $towns = Town::where('name', 'LIKE', "%{$q}%")->pluck('id')->toArray();
-
-      $properties = Property::search($q)->orderBy($sortBy, $orderBy)->paginate($perPage);
+      $properties = Property::search($q)->whereIn('town_id', $t)->orderBy($sortBy, $orderBy)->paginate($perPage);
 
 
-      return view('public.property.properties', compact('properties', 'orderBy', 'sortBy', 'q', 'perPage', 'towns'));
+      return view('public.property.properties', compact('properties', 'orderBy', 'sortBy', 'q', 'perPage', 'towns', 't'));
     }
 }

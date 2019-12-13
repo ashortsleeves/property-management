@@ -49,10 +49,10 @@ class Property extends Model
   public function scopeSearch($query, $q)
   {
     if ($q == null) return $query;
-    $towns = Town::where('name', 'LIKE', "%{$q}%")->pluck('id')->toArray();
+    // $towns = Town::where('name', 'LIKE', "%{$q}%")->pluck('id')->toArray();
     return $query
             ->where('address', 'LIKE', "%{$q}%")
-            ->orWhereIn('town_id', $towns)
+            // ->orWhereIn('town_id', $towns)
             ->orWhere('state', 'LIKE', "%{$q}%");
   }
 }
