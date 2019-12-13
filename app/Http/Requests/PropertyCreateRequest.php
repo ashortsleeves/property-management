@@ -24,10 +24,12 @@ class PropertyCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'address' => 'required',
-            'town_id' => 'required',
-            'rent'    => 'required',
-            'state'   => 'required',
+            'address'   => 'required',
+            'town_id'   => 'required',
+            'rent'      => 'required',
+            'state'     => 'required',
+            'bedrooms'  => 'required',
+            'bathrooms' => 'required',
         ];
     }
 }

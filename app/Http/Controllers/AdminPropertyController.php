@@ -21,6 +21,20 @@ class AdminPropertyController extends Controller
     {
       $towns = Town::pluck('name', 'id')->all();
 
+      $pets = array(
+        'dogs negotiable' => 'dogs negotiable',
+        'cats negotiable' => 'cats negotiable',
+        'pets negotiable' => 'pets negotiable',
+        'not allowed'     => 'not allowed'
+      );
+
+      $washerdryer = array(
+        'coin-op'          => 'coin-op',
+        'hook-ups'         => 'hook-ups',
+        'machines in unit' => 'machines in unit',
+        'none'             => 'none'
+      );
+
       $states = array(
         'Alabama' => 'Alabama',
         'Alaska' => 'Alaska',
@@ -82,7 +96,7 @@ class AdminPropertyController extends Controller
       );
 
       $newTownId = rand(1,99999);
-      return view('admin.property.create', compact('towns', 'newTownId', 'states'));
+      return view('admin.property.create', compact('towns', 'newTownId', 'states', 'washerdryer', 'pets'));
     }
 
     public function store(PropertyCreateRequest $request)
@@ -120,10 +134,22 @@ class AdminPropertyController extends Controller
       return view('public.property.property', compact('property', 'photos', 'town'));
     }
 
-    public function properties()
+    public function properties(Request $request)
     {
-      $properties = Property::all();
+      $sortBy  = 'id';
+      $orderBy = 'desc';
+      $perPage = 20;
+      $q       = null;
 
-      return view('public.property.properties', compact('properties'));
+      if($request->has('orderBy')) $orderBy = $request->query('orderBy');
+      if($request->has('sortBy')) $sortBy = $request->query('sortBy');
+      if($request->has('perPage')) $perPage = $request->query('perPage');
+      if($request->has('q')) $q = $request->query('q');
+
+
+      $properties = Property::search($q)->orderBy($sortBy, $orderBy)->paginate($perPage);
+
+
+      return view('public.property.properties', compact('properties', 'orderBy', 'sortBy', 'q', 'perPage'));
     }
 }

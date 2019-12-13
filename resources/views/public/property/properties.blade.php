@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+  @include('public.property.filter')
+
   @if($properties)
     @foreach ($properties as $property)
 

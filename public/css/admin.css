@@ -222,3 +222,18 @@ form .form-hidden {
   display: none;
 }
 
+table th,
+table td {
+  padding: 10px;
+  line-height: 1;
+}
+
+table th {
+  background-color: #0080b2;
+  color: #fff;
+}
+
+table tr:nth-of-type(even) {
+  background-color: #efefef;
+}
+

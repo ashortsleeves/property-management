@@ -5,6 +5,8 @@ namespace App;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Scope;
+
 
 class Property extends Model
 {
@@ -26,9 +28,12 @@ class Property extends Model
   protected $fillable = [
     'address',
     'town_id',
-    'state_id',
     'state',
     'rent',
+    'bedrooms',
+    'bathrooms',
+    'pets',
+    'washer_dryer',
   ];
 
   public function town() {
@@ -38,4 +43,15 @@ class Property extends Model
   public function photos() {
     return $this->hasMany('App\Photo');
   }
+
+
+  public function scopeSearch($query, $q)
+  {
+    if ($q == null) return $query;
+    return $query
+            ->where('address', 'LIKE', "%{$q}%")
+            ->orWhere('rent', 'LIKE', "%{$q}%")
+            ->orWhere('state', 'LIKE', "%{$q}%");
+  }
+
 }

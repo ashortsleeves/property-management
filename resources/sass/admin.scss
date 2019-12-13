@@ -121,3 +121,24 @@ form {
     display: none;
   }
 }
+
+table {
+  th,
+  td {
+    padding: 10px;
+    line-height: 1;
+  }
+
+  th {
+    background-color: $brand-primary;
+    color: $white;
+
+  }
+
+  tr {
+
+    &:nth-of-type(even) {
+      background-color: #efefef;
+    }
+  }
+}
