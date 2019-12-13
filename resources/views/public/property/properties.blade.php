@@ -26,7 +26,11 @@
             @endforeach
           @endif
         </div>
+        @foreach($towns as $town)
+          <h1>{{$town}}</h1>
+        @endforeach
       </div>
+
       <div class="col-3">
         @include('public.property.filter')
       </div>

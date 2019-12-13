@@ -1,7 +1,7 @@
 <form action="{{route('home.properties')}}">
   <div>
     <div>
-      <h3>Search for Property</h3>
+      <h3>Search By Street, Town, or State</h3>
       <input class="form-control form-control-sm" type="search" name="q" value="{{ $q }}">
     </div>
     <h3>Filter Results By</h3>

@@ -141,15 +141,17 @@ class AdminPropertyController extends Controller
       $perPage = 20;
       $q       = null;
 
+
       if($request->has('orderBy')) $orderBy = $request->query('orderBy');
       if($request->has('sortBy')) $sortBy = $request->query('sortBy');
       if($request->has('perPage')) $perPage = $request->query('perPage');
       if($request->has('q')) $q = $request->query('q');
 
+      $towns = Town::where('name', 'LIKE', "%{$q}%")->pluck('id')->toArray();
 
       $properties = Property::search($q)->orderBy($sortBy, $orderBy)->paginate($perPage);
 
 
-      return view('public.property.properties', compact('properties', 'orderBy', 'sortBy', 'q', 'perPage'));
+      return view('public.property.properties', compact('properties', 'orderBy', 'sortBy', 'q', 'perPage', 'towns'));
     }
 }

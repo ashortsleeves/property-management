@@ -6,6 +6,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Support\Facades\Log;
 
 
 class Property extends Model
@@ -48,9 +49,10 @@ class Property extends Model
   public function scopeSearch($query, $q)
   {
     if ($q == null) return $query;
+    $towns = Town::where('name', 'LIKE', "%{$q}%")->pluck('id')->toArray();
     return $query
             ->where('address', 'LIKE', "%{$q}%")
-            ->orWhere('rent', 'LIKE', "%{$q}%")
+            ->orWhereIn('town_id', $towns)
             ->orWhere('state', 'LIKE', "%{$q}%");
   }
 }
