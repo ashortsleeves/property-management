@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatesToProperties extends Migration
+class AddStateIdToTowns extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddStatesToProperties extends Migration
      */
     public function up()
     {
-        Schema::table('properties', function (Blueprint $table) {
+        Schema::table('towns', function (Blueprint $table) {
           $table->integer('state_id')->index()->unsigned()->nullable();
         });
     }
@@ -25,8 +25,8 @@ class AddStatesToProperties extends Migration
      */
     public function down()
     {
-        Schema::table('properties', function (Blueprint $table) {
-            $table->dropColumn('state_id');
+        Schema::table('towns', function (Blueprint $table) {
+          $table->dropColumn('state_id');
         });
     }
 }

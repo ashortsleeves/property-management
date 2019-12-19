@@ -315,8 +315,13 @@ ul.sidebar li.menu-item.active ul.submenu li a:focus {
   background-color: #efefef;
 }
 
+form .town,
 form .form-hidden {
   display: none;
+}
+
+form .town-show {
+  display: block;
 }
 
 table th,

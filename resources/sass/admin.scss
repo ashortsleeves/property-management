@@ -117,8 +117,13 @@ ul.sidebar {
 }
 
 form {
+  .town,
   .form-hidden {
     display: none;
+  }
+
+  .town-show {
+    display: block;
   }
 }
 

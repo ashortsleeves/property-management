@@ -9,7 +9,12 @@ class Town extends Model
     protected $fillable = [
       'id',
       'name',
+      'state_id',
       'created_at',
       'updated_at'
     ];
+
+    public function state() {
+      return $this->belongsTo('App\State');
+    }
 }

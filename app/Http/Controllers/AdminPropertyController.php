@@ -21,6 +21,12 @@ class AdminPropertyController extends Controller
     public function create()
     {
       $towns = Town::pluck('name', 'id')->all();
+      $towns = Town::all();
+
+
+
+
+
 
       $states = State::pluck('name', 'id')->all();
 
@@ -107,17 +113,18 @@ class AdminPropertyController extends Controller
     {
       $input = $request->all();
 
-      if($request->input('town_new')) {
-        $town = Town::create([
-          'id'    => $request->input('town_id'),
-          'name'  => $request->input('town_new')
-        ]);
-      }
-
       if($request->input('state_new')) {
         $state = State::create([
           'id'    => $request->input('state_id'),
           'name'  => $request->input('state_new')
+        ]);
+      }
+
+      if($request->input('town_new')) {
+        $town = Town::create([
+          'id'       => $request->input('town_id'),
+          'name'     => $request->input('town_new'),
+          'state_id' => $request->input('state_id')
         ]);
       }
 
