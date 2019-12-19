@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Property;
 use App\Town;
+use App\State;
 use App\Photo;
 use App\Http\Requests\PropertyCreateRequest;
 
@@ -21,6 +22,8 @@ class AdminPropertyController extends Controller
     {
       $towns = Town::pluck('name', 'id')->all();
 
+      $states = State::pluck('name', 'id')->all();
+
       $pets = array(
         'dogs negotiable' => 'dogs negotiable',
         'cats negotiable' => 'cats negotiable',
@@ -35,7 +38,7 @@ class AdminPropertyController extends Controller
         'none'             => 'none'
       );
 
-      $states = array(
+      $statesList = array(
         'Alabama' => 'Alabama',
         'Alaska' => 'Alaska',
         'American Samoa' => 'American Samoa',
@@ -96,7 +99,8 @@ class AdminPropertyController extends Controller
       );
 
       $newTownId = rand(1,99999);
-      return view('admin.property.create', compact('towns', 'newTownId', 'states', 'washerdryer', 'pets'));
+      $newStateId = rand(1,99999);
+      return view('admin.property.create', compact('towns', 'newTownId', 'states', 'newStateId', 'statesList', 'washerdryer', 'pets'));
     }
 
     public function store(PropertyCreateRequest $request)
@@ -107,6 +111,13 @@ class AdminPropertyController extends Controller
         $town = Town::create([
           'id'    => $request->input('town_id'),
           'name'  => $request->input('town_new')
+        ]);
+      }
+
+      if($request->input('state_new')) {
+        $state = State::create([
+          'id'    => $request->input('state_id'),
+          'name'  => $request->input('state_new')
         ]);
       }
 
@@ -137,21 +148,28 @@ class AdminPropertyController extends Controller
     public function properties(Request $request)
     {
       $towns   = Town::all();
+      $states  = State::all();
       $sortBy  = 'id';
       $orderBy = 'desc';
       $perPage = 20;
       $q       = null;
       $t       = $towns->pluck('id')->toArray();
+      $s       = $states->pluck('id')->toArray();
 
       if($request->has('orderBy')) $orderBy = $request->query('orderBy');
       if($request->has('sortBy')) $sortBy = $request->query('sortBy');
       if($request->has('perPage')) $perPage = $request->query('perPage');
       if($request->has('q')) $q = $request->query('q');
       if($request->has('t')) $t = $request->get('t');
+      if($request->has('s')) $s = $request->get('s');
 
-      $properties = Property::search($q)->whereIn('town_id', $t)->orderBy($sortBy, $orderBy)->paginate($perPage);
+      $properties = Property::search($q)
+        ->whereIn('town_id', $t)
+        ->WhereIn('state_id', $s)
+        ->orderBy($sortBy, $orderBy)
+        ->paginate($perPage);
 
 
-      return view('public.property.properties', compact('properties', 'orderBy', 'sortBy', 'q', 'perPage', 'towns', 't'));
+      return view('public.property.properties', compact('properties', 'orderBy', 'sortBy', 'q', 'perPage', 'towns', 't', 'states', 's'));
     }
 }

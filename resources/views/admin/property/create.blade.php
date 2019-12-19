@@ -19,10 +19,21 @@
       {!!Form::label('town_new', 'New Town: ')!!}
       {!!Form::text('town_new', null, ['class'=>'form-control'])!!}
     </div>
+
+
     <div class="form-group">
-      {!!Form::label('state', 'State: ')!!}
-      {!!Form::select('state', ['' => 'Choose Option'] + $states, null, ['class'=>'form-control'])!!}
+      {!!Form::label('state_id', 'State: ')!!}
+      {!!Form::select('state_id',['' => 'Choose Option'] +  $states + [$newStateId => 'New State'], null, ['class'=>'form-control form-towns'])!!}
     </div>
+
+
+    <div class="form-group form-newState form-hidden">
+      {!!Form::label('state_new', 'New State: ')!!}
+      {!!Form::select('state_new', ['' => 'Choose Option'] + $statesList, null, ['class'=>'form-control'])!!}
+    </div>
+
+
+
     <div class="form-group">
         {!!Form::label('rent', 'Rent: ')!!}
         {!!Form::text('rent', null, ['class'=>'form-control'])!!}

@@ -111,6 +111,15 @@ $("#town_id").change(function () {
 
   ;
 });
+$("#state_id").change(function () {
+  if ($("#state_id option:selected").text() == "New State") {
+    $('.form-newState').removeClass('form-hidden');
+  } else {
+    $('.form-newState').addClass('form-hidden');
+  }
+
+  ;
+});
 
 /***/ }),
 

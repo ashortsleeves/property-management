@@ -6,8 +6,7 @@
     <li>${{$property->rent}}/month</li>
     <li>{{$property->address}}</li>
     <li>{{$property->town->name}}</li>
-
-    <li>{{$property->state}}</li>
+    <li>{{$property->state->name}}</li>
   </ul>
 
   @if($photos)

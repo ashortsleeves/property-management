@@ -25,7 +25,7 @@
           <td>{{$property->id}}</td>
           <td><a href="{{route('home.property', $property->slug)}}" >{{$property->address}}</a></td>
           <td>{{$property->town->name}}</td>
-          <td>{{$property->state}}</td>
+          <td>{{$property->state->name}}</td>
           <td><a href="{{route('media.show', $property->id)}}">View Photos</a></td>
           <td>{{$property->rent}}</td>
           <td>{{$property->bedrooms}}</td>

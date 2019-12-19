@@ -1,7 +1,7 @@
 <form action="{{route('home.properties')}}">
   <div>
     <div>
-      <h3>Search By Street, Town, or State</h3>
+      <h3>Search By Street</h3>
       <input class="form-control" type="search" name="q" value="{{ $q }}">
     </div>
     <h3>Filter By Towns</h3>
@@ -11,6 +11,17 @@
       <input type="checkbox" name="t[]" value="{{$town->id}}" {{in_array($town->id, $t) ? 'checked': ''}}>{{$town->name}}</input>
       <br>
     @endforeach
+
+
+
+    <h3>Filter By State</h3>
+
+    @foreach($states as $state)
+
+      <input type="checkbox" name="s[]" value="{{$state->id}}" {{in_array($state->id, $s) ? 'checked': ''}}>{{$state->name}}</input>
+      <br>
+    @endforeach
+
     <h3>Filter Results By</h3>
 
     <select name="sortBy" class="form-control" value="{{ $sortBy }}">

@@ -29,7 +29,7 @@ class Property extends Model
   protected $fillable = [
     'address',
     'town_id',
-    'state',
+    'state_id',
     'rent',
     'bedrooms',
     'bathrooms',
@@ -39,6 +39,10 @@ class Property extends Model
 
   public function town() {
     return $this->belongsTo('App\Town');
+  }
+
+  public function state() {
+    return $this->belongsTo('App\State');
   }
 
   public function photos() {
