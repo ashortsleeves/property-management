@@ -81,71 +81,49 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/admin.js":
-/*!*******************************!*\
-  !*** ./resources/js/admin.js ***!
-  \*******************************/
+/***/ "./resources/js/filter.js":
+/*!********************************!*\
+  !*** ./resources/js/filter.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  var activator = $("h1.title").html(); // var disabledStates = $('#state_new option').text() ==
+  $(".state-check").each(function () {
+    var townHide = $(".town-check[data-state='" + $(this).val() + "']");
 
-  $(".menu-item:contains('" + activator + "')").addClass("active");
-  var disabledStates = new Array();
-  $('#state_id option').each(function () {
-    disabledStates.push($(this).text());
-  });
-  $("#state_new option").each(function () {
-    if (jQuery.inArray($(this).text(), disabledStates) !== -1) {
-      $(this).attr("disabled", true);
+    if ($(this).is(':checked')) {
+      townHide.show();
+    } else {
+      townHide.hide().children("input").prop("checked", false);
     }
-
-    ;
   });
-});
-$(".menu-item").click(function () {
-  $(".menu-item.active").removeClass("active");
-  $(this).addClass("active");
-});
-$("#town_id").change(function () {
-  if ($("#town_id option:selected").text() == "New Town") {
-    $('.form-newTown').removeClass('form-hidden');
-  } else {
-    $('.form-newTown').addClass('form-hidden');
-  }
+  $(".state-check").click(function () {
+    var townHide = $(".town-check[data-state='" + $(this).val() + "']");
 
-  ;
-});
-$("#state_id").change(function () {
-  var selectedState = $(this).children("option:selected").val();
-  $("#town_id option.town").removeClass('town-show').attr("disabled", true);
-
-  if ($("#state_id option:selected").text() == "New State") {
-    $('.form-newState').removeClass('form-hidden');
-  } else {
-    $('.form-newState').addClass('form-hidden');
-    $("#town_id option[data-state='" + selectedState + "']").addClass("town-show").attr("disabled", false);
-  }
-
-  ;
+    if ($(this).is(':checked')) {
+      townHide.show().children("input").prop("disabled", false);
+    } else {
+      townHide.hide().children("input").prop("disabled", true);
+    }
+  });
 });
 
 /***/ }),
 
-/***/ 1:
-/*!*************************************!*\
-  !*** multi ./resources/js/admin.js ***!
-  \*************************************/
+/***/ 2:
+/*!**************************************!*\
+  !*** multi ./resources/js/filter.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/ashortsleeves/laravel/property-management/resources/js/admin.js */"./resources/js/admin.js");
+module.exports = __webpack_require__(/*! /Users/ashortsleeves/laravel/property-management/resources/js/filter.js */"./resources/js/filter.js");
 
 
 /***/ })

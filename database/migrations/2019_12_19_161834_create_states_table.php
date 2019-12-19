@@ -14,7 +14,7 @@ class CreateStatesTable extends Migration
     public function up()
     {
         Schema::create('states', function (Blueprint $table) {
-          $table->integer('id');
+          $table->integer('id')->unique();
           $table->enum('name', [
             'Alabama',
             'Alaska',
@@ -73,7 +73,7 @@ class CreateStatesTable extends Migration
             'West Virginia',
             'Wisconsin',
             'Wyoming'
-          ])->nullable($value = false);
+          ])->nullable($value = false)->unique();
           $table->timestamps();
         });
     }

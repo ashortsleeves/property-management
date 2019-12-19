@@ -36,6 +36,8 @@
           <td>{{$property->updated_at->diffForHumans()}}</td>
         </tr>
       @endforeach
+
+      <a href="{{route('home.properties')}}">View All Properties</a>
     @endif
   </tbody>
 </table>

@@ -3,7 +3,6 @@ $(document).ready(function(){
 
   // var disabledStates = $('#state_new option').text() ==
   $(".menu-item:contains('"+ activator +"')").addClass("active");
-  console.log(activator);
 
   var disabledStates = new Array();
 
@@ -12,14 +11,10 @@ $(document).ready(function(){
   });
 
   $( "#state_new option" ).each(function() {
-    if(jQuery.inArray( $( this ).text(), disabledStates) !== -1) {
-      console.log($(this).text());
+    if(jQuery.inArray( $(this).text(), disabledStates) !== -1) {
       $(this).attr("disabled", true);
-    }
-  ;
-});
-
-  console.log(disabledStates);
+    };
+  });
 });
 
 $(".menu-item").click(function(){

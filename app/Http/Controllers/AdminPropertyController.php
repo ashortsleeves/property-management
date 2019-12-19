@@ -23,11 +23,6 @@ class AdminPropertyController extends Controller
       $towns = Town::pluck('name', 'id')->all();
       $towns = Town::all();
 
-
-
-
-
-
       $states = State::pluck('name', 'id')->all();
 
       $pets = array(
