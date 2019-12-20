@@ -14,7 +14,7 @@ class CreateTownsTable extends Migration
     public function up()
     {
         Schema::create('towns', function (Blueprint $table) {
-            $table->integer('id')->unique();
+            $table->integer('id')->index()->unsigned()->nullable()->unique();
             $table->string('name');
             $table->timestamps();
         });

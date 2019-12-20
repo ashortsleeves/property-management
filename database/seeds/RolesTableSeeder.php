@@ -27,5 +27,29 @@ class RolesTableSeeder extends Seeder
         'email'     => 'admin@admin.com',
         'password'  => '$2y$10$6bwPWXDKKgl46LemZtFjXu3sHyv9ce2kpLBC99uDz0flkXaDrDWo.',
       ]);
+      DB::table('states')->insert([
+        'id'        => 1,
+        'name'      => 'Vermont',
+      ]);
+      DB::table('states')->insert([
+        'id'        => 2,
+        'name'      => 'New Hampshire',
+      ]);
+      DB::table('states')->insert([
+        'id'        => 3,
+        'name'      => 'Maine',
+      ]);
+      DB::table('states')->insert([
+        'id'        => 4,
+        'name'      => 'Massachusetts',
+      ]);
+      DB::table('states')->insert([
+        'id'        => 5,
+        'name'      => 'Connecticut',
+      ]);
+      DB::table('states')->insert([
+        'id'        => 6,
+        'name'      => 'Rhode Island',
+      ]);
     }
 }

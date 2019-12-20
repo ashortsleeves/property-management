@@ -55,8 +55,8 @@ class Property extends Model
     if ($q == null) return $query;
     // $towns = Town::where('name', 'LIKE', "%{$q}%")->pluck('id')->toArray();
     return $query
-            ->where('address', 'LIKE', "%{$q}%")
+            ->where('address', 'LIKE', "%{$q}%");
             // ->orWhereIn('town_id', $towns)
-            ->orWhere('state', 'LIKE', "%{$q}%");
+            // ->orWhere('state', 'LIKE', "%{$q}%");
   }
 }

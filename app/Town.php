@@ -17,4 +17,9 @@ class Town extends Model
     public function state() {
       return $this->belongsTo('App\State');
     }
+
+    // public function properties() {
+    //   return $this->hasMany('App\Property');
+    // }
+    public $incrementing = false;
 }
