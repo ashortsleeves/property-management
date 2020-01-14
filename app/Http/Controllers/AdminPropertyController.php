@@ -149,8 +149,8 @@ class AdminPropertyController extends Controller
 
     public function properties(Request $request)
     {
-      $towns   = Town::all();
-      $states  = State::all();
+      $towns   = Town::all()->sortBy('state.name');
+      $states  = State::all()->sortBy('name');
       $sortBy  = 'id';
       $orderBy = 'desc';
       $perPage = 20;
@@ -170,7 +170,6 @@ class AdminPropertyController extends Controller
         ->WhereIn('state_id', $s)
         ->orderBy($sortBy, $orderBy)
         ->paginate($perPage);
-
 
       return view('public.property.properties', compact('properties', 'orderBy', 'sortBy', 'q', 'perPage', 'towns', 't', 'states', 's'));
     }

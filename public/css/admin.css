@@ -13,6 +13,7 @@
           margin-inline-start: 0px;
   -webkit-margin-end: 0px;
           margin-inline-end: 0px;
+  box-sizing: border-box;
 }
 
 html,
@@ -75,7 +76,7 @@ a:focus {
 }
 
 a:hover {
-  color: #e3be73;
+  color: #ffd47d;
 }
 
 ul.nav {
@@ -86,6 +87,11 @@ ul.nav {
 ul.nav .sub-menu {
   list-style-type: none;
   padding: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .panel {
@@ -127,6 +133,7 @@ ul.nav .sub-menu {
   position: relative;
   width: 100%;
   min-height: 1px;
+  box-sizing: border-box;
 }
 
 .col-1 {
@@ -199,6 +206,16 @@ ul.nav .sub-menu {
   -webkit-box-flex: 0;
           flex: 0 0 100%;
   max-width: 100%;
+}
+
+.offwhite {
+  background-color: #ececec;
+}
+
+.jumbo-bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 header {

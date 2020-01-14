@@ -53,8 +53,6 @@ $factory->define(Property::class, function (Faker $faker) {
 
     return [
         'address' => $address,
-        // 'town_id' => $faker->numberBetween(1, 20),
-        // 'state_id' => factory(App\Town::class),
         'rent' => $faker->numberBetween(500, 1300),
         'bedrooms' => $faker->numberBetween(1, 5),
         'bathrooms' => $faker->numberBetween(1,3),

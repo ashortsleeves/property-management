@@ -13,21 +13,29 @@
       <!-- Fonts -->
       <link rel="dns-prefetch" href="//fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+      <link href="{{asset('css/all.min.css')}}" rel="stylesheet">
 
       <!-- Styles -->
       <link href="{{ asset('css/main.css') }}" rel="stylesheet">
   </head>
   <body>
-    <ul>
-      <!-- Authentication Links -->
-      @guest
-        <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
-        @if (Route::has('register'))
-          <li> <a href="{{ route('register') }}">{{ __('Register') }}</a></li>
-        @endif
-      @else
-        <li><a href="{{ url('/home') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->name }}</a>
-          <div>
+    <header>
+      <h2><a href="#" class="primary-logo"><strong>Property</strong>Management</a></h2>
+      <ul class="nav">
+        <!-- Authentication Links -->
+        <div class="circle">
+          <i class="fas fa-user"></i>
+        </div>
+        @guest
+          <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+          @if (Route::has('register'))
+            <li> <a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+          @endif
+        @else
+          <li class="admin"><a href="{{ url('/home') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->name }}</a>
+
+          </li>
+          <li>
             <a href="{{ route('logout') }}"
                onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
@@ -36,10 +44,11 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf
             </form>
-          </div>
-        </li>
-      @endguest
-    </ul>
+          </li>
+        @endguest
+      </ul>
+    </header>
+
       <main>
         @yield('content')
       </main>

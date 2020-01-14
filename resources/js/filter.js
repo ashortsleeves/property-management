@@ -7,7 +7,7 @@ $(document).ready(function(){
       townHide.hide().children( "input" ).prop("checked", false);
     }
   });
-  
+
   $(".state-check").click(function(){
     var townHide = $(".town-check[data-state='"+$(this).val()+"']");
 
@@ -15,6 +15,15 @@ $(document).ready(function(){
       townHide.show().children( "input" ).prop("disabled", false);
     } else {
       townHide.hide().children( "input" ).prop("disabled", true);
+    }
+  });
+
+  $('#iconified').on('keyup', function() {
+    var input = $(this);
+    if(input.val().length === 0) {
+        input.addClass('empty');
+    } else {
+        input.removeClass('empty');
     }
   });
 });

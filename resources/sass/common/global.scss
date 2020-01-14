@@ -1,5 +1,6 @@
 * {
   @include UAS-remove;
+  box-sizing: border-box;
 }
 
 html,
@@ -74,6 +75,11 @@ ul.nav {
   }
 }
 
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 .panel {
   padding: $section-padding 0;
 
@@ -108,6 +114,7 @@ ul.nav {
   position: relative;
   width: 100%;
   min-height: 1px;
+  box-sizing: border-box;
 
   &-1 {
     flex: 0 0 8.333333333%;
@@ -166,6 +173,16 @@ ul.nav {
 
   &-12 {
     flex: 0 0 100%;
-    max-width: 100%;         
+    max-width: 100%;
   }
+}
+
+.offwhite {
+  background-color: #ececec;
+}
+
+.jumbo-bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

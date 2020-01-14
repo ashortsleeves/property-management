@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RolesTableSeeder::class);
 
-        factory(App\Town::class, 5)->create()->each(function($town){
-          factory(App\Property::class, 2)->create([
+        factory(App\Town::class, 10)->create()->each(function($town){
+          factory(App\Property::class, 20)->create([
             'state_id' => $town->state_id,
             'town_id'  => $town->id,
           ])->each(function($property){
