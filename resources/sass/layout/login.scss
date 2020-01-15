@@ -1,0 +1,16 @@
+form.login {
+  h2,
+  .form-check {
+    margin-bottom: 10px;
+  }
+
+  input.form-control {
+    -webkit-appearance: none;
+    -moz-apppearance: none;
+    appearance: none;
+    border: solid 1px #999;
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+  }
+}

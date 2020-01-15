@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+  <div class="offwhite full-page main-wrap">
+    <div class="container">
+      <div class="row row-centered">
+        <div class="col-4">
+          <div class="card">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

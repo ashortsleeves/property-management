@@ -11,6 +11,7 @@ class Photo extends Model
   protected $fillable = [
     'property_id',
     'file',
+    'featured'
   ];
 
   public function getFileAttribute($photo) {

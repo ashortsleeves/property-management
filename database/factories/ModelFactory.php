@@ -87,5 +87,6 @@ $factory->define(Photo::class, function (Faker $faker){
       'placeholder-8.jpg',
       'placeholder-9.jpg',
     ]),
+    'featured' => 1,
   ];
 });

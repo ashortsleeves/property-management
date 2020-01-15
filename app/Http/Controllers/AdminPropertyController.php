@@ -127,11 +127,17 @@ class AdminPropertyController extends Controller
 
       if($request->file('media')) {
         foreach($request->file('media') as $media) {
+          $featured = false;
+          if($request->input('featured') === $media->getClientOriginalName()) {
+            $featured = true;
+          }
+
           $name = time() . $media->getClientOriginalName();
           $media->move('images', $name);
           $photo = Photo::create([
             'file'        => $name,
-            'property_id' => $newProp->id
+            'property_id' => $newProp->id,
+            'featured' => $featured
           ]);
         }
       }
@@ -149,14 +155,14 @@ class AdminPropertyController extends Controller
 
     public function properties(Request $request)
     {
-      $towns   = Town::all()->sortBy('state.name');
-      $states  = State::all()->sortBy('name');
-      $sortBy  = 'id';
-      $orderBy = 'desc';
-      $perPage = 20;
-      $q       = null;
-      $t       = $towns->pluck('id')->toArray();
-      $s       = $states->pluck('id')->toArray();
+      $towns    = Town::all()->sortBy('state.name');
+      $states   = State::all()->sortBy('name');
+      $sortBy   = 'id';
+      $orderBy  = 'desc';
+      $perPage  = 20;
+      $q        = null;
+      $t        = $towns->pluck('id')->toArray();
+      $s        = $states->pluck('id')->toArray();
 
       if($request->has('orderBy')) $orderBy = $request->query('orderBy');
       if($request->has('sortBy')) $sortBy = $request->query('sortBy');

@@ -129,6 +129,11 @@ ul {
   margin-right: -15px;
 }
 
+.row-centered {
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
 .col {
   padding-left: 15px;
   padding-right: 15px;
@@ -214,10 +219,23 @@ ul {
   background-color: #ececec;
 }
 
+.full-page {
+  min-height: 100vh;
+}
+
+.main-wrap {
+  padding: 60px 0;
+}
+
 .jumbo-bg {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.card {
+  background-color: #fff;
+  padding: 15px;
 }
 
 header {
@@ -406,6 +424,22 @@ ul.pagination li a[rel~=prev]:focus,
 ul.pagination li a[rel~=next]:hover,
 ul.pagination li a[rel~=next]:focus {
   color: #ffc34a;
+}
+
+form.login h2,
+form.login .form-check {
+  margin-bottom: 10px;
+}
+
+form.login input.form-control {
+  -webkit-appearance: none;
+  -moz-apppearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  border: solid 1px #999;
+  width: 100%;
+  padding: 5px 10px;
+  margin-bottom: 10px;
 }
 
 .listings-container {

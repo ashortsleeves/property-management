@@ -3,6 +3,9 @@
 
 @endsection
 @section('content')
+
+
+
   <h1>Property Create</h1>
 
 
@@ -70,7 +73,8 @@
     <div class="form-group">
       {!!Form::label('file', 'File: ')!!}
 
-      <input name="media[]" type="file" id="media" multiple>
+      <input name="media[]" type="file" id="media" multiple accept="image/*">
+      <div id="selectedFiles"></div>
     </div>
     <div class="form-group">
       {!!Form::submit('Create ', ['class'=>'btn btn-primary'])!!}
@@ -90,19 +94,6 @@
   @endif
 @endsection
 
-{{-- @foreach($towns as $town)
-  <ul>
-    <li>
-      {{$town->id}}
-    </li>
-    <li>
-      {{$town->name}}
-    </li>
-    <li>
-      {{$town->state_id}}
-    </li>
-  </ul>
-@endforeach --}}
-
 @section('scripts')
+  <script src="{{asset('js/admin-properties.js')}}"></script>
 @endsection

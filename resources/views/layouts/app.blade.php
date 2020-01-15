@@ -20,8 +20,11 @@
   </head>
   <body>
     <header>
-      <h2><a href="#" class="primary-logo"><strong>Property</strong>Management</a></h2>
+      <h2><a href="{{ url('/')}}" class="primary-logo"><strong>Property</strong>Management</a></h2>
       <ul class="nav">
+        <li><a href="{{ url('/')}}">Home</a></li>
+        <li><a href="{{ url('/properties')}}">Properties</a></li>
+        <li><a href="#">Tenants</a></li>
         <!-- Authentication Links -->
         <div class="circle">
           <i class="fas fa-user"></i>

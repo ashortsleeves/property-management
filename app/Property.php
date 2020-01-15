@@ -49,6 +49,9 @@ class Property extends Model
     return $this->hasMany('App\Photo');
   }
 
+  public function featimg() {
+    return $this->photos()->where('featured', '=', true)->firstOrFail();
+  }
 
   public function scopeSearch($query, $q)
   {
