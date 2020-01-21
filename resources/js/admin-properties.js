@@ -30,7 +30,7 @@ function handleFileSelect(e) {
 
       var reader = new FileReader();
       reader.onload = function (e) {
-        var html = "<input "+ checked +" type='radio' name='featured' value='"+f.name+"'><img class='img-preview' src=\"" + e.target.result + "\">" + f.name + "<br clear=\"left\"/>";
+        var html = "<div class='img-wrap'><input "+ checked +" type='radio' name='featured' value='"+f.name+"'><img class='img-preview' src=\"" + e.target.result + "\"><a class='beleted' href='#'><i class='fas fa-times-circle'></i></a></div><br clear=\"left\"/>"+ f.name;
         selDiv.innerHTML += html;
       }
       reader.readAsDataURL(f);

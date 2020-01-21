@@ -30,6 +30,7 @@ class PropertyCreateRequest extends FormRequest
             'state_id'  => 'required',
             'bedrooms'  => 'required',
             'bathrooms' => 'required',
+            'body'      => 'required',
         ];
     }
 }

@@ -20,4 +20,9 @@ class AdminMediaController extends Controller
     $photos = $property->photos;
     return view('media.show', compact('property', 'photos'));
   }
+
+  // public function update(Request $request, $id)
+  // {
+  //   Photo::findOrFail($id)->update($request->('featured'));
+  // }
 }

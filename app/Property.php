@@ -35,6 +35,7 @@ class Property extends Model
     'bathrooms',
     'pets',
     'washer_dryer',
+    'body',
   ];
 
   public function town() {

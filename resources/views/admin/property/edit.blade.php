@@ -6,8 +6,9 @@
 @include('includes.tinyeditor')
 
 
-  <h1>Property Create</h1>
+  <h1>Edit Property</h1>
 
+  {!! Form::model($property, ['method'=>'PATCH', 'action'=> [ 'AdminPropertyController@update', $property->id], 'files' => true])!!}
 
   {!! Form::open(['method'=>'POST', 'action'=> 'AdminPropertyController@store', 'files'=>true, 'autocomplete'=>"off"])!!}
     <div class="form-group">
@@ -27,12 +28,14 @@
       {!!Form::select('state_new', ['' => 'Choose Option'] + $statesList, null, ['class'=>'form-control'])!!}
     </div>
 
+{{-- selected="selected" --}}
+
     <div class="form-group">
       {!!Form::label('town_id', 'Town: ')!!}
       <select class="form-control form-towns" id="town_id" name="town_id">
-        <option class="choose" value="">Choose Option</option>
+        <option class="choose" value="" >Choose Option</option>
         @foreach($towns as $town)
-          <option class="town" value="{{$town->id}}" data-state="{{$town->state_id}}">{{$town->name}}</option>
+          <option class="town {{ $town->id === $property->town_id ? 'town-selected' : ''}}" value="{{$town->id}}" data-state="{{$town->state_id}}" {{ $town->id === $property->town_id ? 'selected=selected' : ''}}>{{$town->name}}</option>
         @endforeach
         <option value="{{$newTownId}}">New Town</option>
       </select>
@@ -68,7 +71,21 @@
       {!!Form::label('file', 'File: ')!!}
 
       <input name="media[]" type="file" id="media" multiple accept="image/*">
-      <div id="selectedFiles"></div>
+      <div id="selectedFiles">
+
+      </div>
+      @foreach($property->photos as $photo )
+
+        <div class="img-wrap">
+          <input {{ $photo->featured == 1 ? 'checked="checked"' : ''}} type="radio" name="featured" value="{{ str_replace('/images/', '', $photo->file) }}">
+          <img class="img-preview" src="{{$photo->file}}" />
+          <span class="beleted">
+            <input name="delete" type="button" href="#" value="{{$photo->id}}" /><i class="fas fa-times-circle"></i>
+          </span>
+
+        </div>
+
+      @endforeach
     </div>
 
     <div class="form-group">
@@ -76,7 +93,7 @@
       {!!Form::textarea('body', null, ['class'=>'form-control','rows'=>5])!!}
     </div>
     <div class="form-group">
-      {!!Form::submit('Create ', ['class'=>'btn btn-primary'])!!}
+      {!!Form::submit('Update ', ['class'=>'btn btn-primary'])!!}
     </div>
   {!!Form::close()!!}
 

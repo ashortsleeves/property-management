@@ -359,6 +359,47 @@ form .town-show {
   display: block;
 }
 
+form .img-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+form .img-wrap .beleted {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+form .img-wrap .beleted i {
+  color: white;
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+form .img-wrap .beleted input {
+  position: relative;
+  background: transparent;
+  color: transparent;
+  padding: 0;
+  border: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  cursor: pointer;
+}
+
+form .img-wrap .beleted:hover i,
+form .img-wrap .beleted:focus i {
+  color: #F20732;
+}
+
 table th,
 table td {
   padding: 10px;

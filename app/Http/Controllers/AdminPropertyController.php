@@ -145,6 +145,158 @@ class AdminPropertyController extends Controller
       return redirect('/admin/property');
     }
 
+
+    public function edit($id)
+    {
+      $property = Property::findOrFail($id);
+
+
+      $states = State::pluck('name', 'id')->all();
+      $towns = Town::pluck('name', 'id')->all();
+      $towns = Town::all();
+      $pets = array(
+        'dogs negotiable' => 'dogs negotiable',
+        'cats negotiable' => 'cats negotiable',
+        'pets negotiable' => 'pets negotiable',
+        'not allowed'     => 'not allowed'
+      );
+
+      $washerdryer = array(
+        'coin-op'          => 'coin-op',
+        'hook-ups'         => 'hook-ups',
+        'machines in unit' => 'machines in unit',
+        'none'             => 'none'
+      );
+
+      $statesList = array(
+        'Alabama' => 'Alabama',
+        'Alaska' => 'Alaska',
+        'American Samoa' => 'American Samoa',
+        'Arizona' => 'Arizona',
+        'Arkansas' => 'Arkansas',
+        'California' =>'California',
+        'Colorado'=>'Colorado',
+        'Connecticut'=>'Connecticut',
+        'Delaware'=>'Delaware',
+        'District of Columbia'=>'District of Columbia',
+        'Florida'=>'Florida',
+        'Georgia'=>'Georgia',
+        'Guam'=>'Guam',
+        'Hawaii'=>'Hawaii',
+        'Idaho'=>'Idaho',
+        'Illinois'=>'Illinois',
+        'Indiana'=>'Indiana',
+        'Iowa'=>'Iowa',
+        'Kansas'=>'Kansas',
+        'Kentucky'=>'Kentucky',
+        'Louisiana'=>'Louisiana',
+        'Maine'=>'Maine',
+        'Maryland'=>'Maryland',
+        'Massachusetts'=>'Massachusetts',
+        'Michigan'=>'Michigan',
+        'Minnesota'=>'Minnesota',
+        'Minor Outlying Islands'=>'Minor Outlying Islands',
+        'Mississippi'=>'Mississippi',
+        'Missouri'=>'Missouri',
+        'Montana'=>'Montana',
+        'Nebraska'=>'Nebraska',
+        'Nevada'=>'Nevada',
+        'New Hampshire'=>'New Hampshire',
+        'New Jersey'=>'New Jersey',
+        'New Mexico'=>'New Mexico',
+        'New York'=>'New York',
+        'North Carolina'=>'North Carolina',
+        'North Dakota'=>'North Dakota',
+        'Northern Mariana Islands'=>'Northern Mariana Islands',
+        'Ohio'=>'Ohio',
+        'Oklahoma'=>'Oklahoma',
+        'Oregon'=>'Oregon',
+        'Pennsylvania'=>'Pennsylvania',
+        'Puerto Rico'=>'Puerto Rico',
+        'Rhode Island'=>'Rhode Island',
+        'South Carolina'=>'South Carolina',
+        'South Dakota'=>'South Dakota',
+        'Tennessee'=>'Tennessee',
+        'Texas'=>'Texas',
+        'U.S. Virgin Islands'=>'U.S. Virgin Islands',
+        'Utah'=>'Utah',
+        'Vermont'=>'Vermont',
+        'Virginia'=>'Virginia',
+        'Washington'=>'Washington',
+        'West Virginia'=>'West Virginia',
+        'Wisconsin'=>'Wisconsin',
+        'Wyoming'=>'Wyoming'
+      );
+
+      $newTownId = rand(1,99999);
+      $newStateId = rand(1,99999);
+      return view('admin.property.edit', compact('property', 'towns', 'newTownId', 'states', 'newStateId', 'statesList', 'washerdryer', 'pets'));
+    }
+
+    public function update(PropertyCreateRequest $request, $id)
+    {
+      $input = $request->all();
+      if($request->input('state_new')) {
+        $state = State::create([
+          'id'    => $request->input('state_id'),
+          'name'  => $request->input('state_new')
+        ]);
+      }
+
+      if($request->input('town_new')) {
+        $town = Town::create([
+          'id'       => $request->input('town_id'),
+          'name'     => $request->input('town_new'),
+          'state_id' => $request->input('state_id')
+        ]);
+      }
+
+      $newProp = Property::findOrFail($id);
+      $featimg = $request->input('featured');
+
+
+      if($featimg) {
+        Photo::where('property_id', $id)
+        ->where('featured', 1)
+        ->update(['featured' => 0]);
+
+        Photo::where('property_id', $id)
+          ->where('file', $featimg)
+          ->update(['featured'=> 1]);
+      }
+
+      if($request->file('media')) {
+        foreach($request->file('media') as $media) {
+          $featured = false;
+          if($featimg === $media->getClientOriginalName()) {
+            $featured = true;
+
+            Photo::where('property_id', $id)
+            ->where('featured', 1)
+            ->update(['featured' => 0]);
+          }
+
+          $name = time() . $media->getClientOriginalName();
+          $media->move('images', $name);
+
+          $photo = Photo::create([
+            'file'        => $name,
+            'property_id' => $newProp->id,
+            'featured' => $featured
+          ]);
+        }
+      }
+
+
+
+
+      Property::findOrFail($id)->update($request->all());
+
+      return redirect('/admin/property');
+
+    }
+
+
     public function property($slug)
     {
       $property = Property::findBySlugOrFail($slug);

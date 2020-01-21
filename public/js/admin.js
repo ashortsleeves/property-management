@@ -122,9 +122,19 @@ $("#town_id").change(function () {
 
   ;
 });
+var selectedState = $("#state_id").children("option:selected").val();
+$("#town_id option[data-state='" + selectedState + "']").addClass("town-show").attr("disabled", false);
+
+if ($('#town_id option.town-selected').attr('data-state') !== selectedState) {
+  $('option.town-selected').removeClass("town-show").attr("disabled", true).attr("selected", null);
+}
+
+;
 $("#state_id").change(function () {
   var selectedState = $(this).children("option:selected").val();
   $("#town_id option.town").removeClass('town-show').attr("disabled", true);
+  $("#town_id option[data-state='" + selectedState + "']").removeClass("town-show").attr("disabled", true).attr("selected", null);
+  $("#town_id option.choose").attr("selected", true);
 
   if ($("#state_id option:selected").text() == "New State") {
     $('.form-newState').removeClass('form-hidden');

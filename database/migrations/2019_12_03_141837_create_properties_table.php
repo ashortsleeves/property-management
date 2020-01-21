@@ -27,6 +27,7 @@ class CreatePropertiesTable extends Migration
               'pets negotiable',
               'not allowed'
             ])->nullable($value = false);
+            $table->text('body');
             $table->enum('washer_dryer', [
               'coin-op',
               'hook-ups',

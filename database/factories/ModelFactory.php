@@ -69,6 +69,7 @@ $factory->define(Property::class, function (Faker $faker) {
           'none'
         ]),
         'slug' => strtolower($addressSlug),
+        'body' => $faker->sentence(),
     ];
 });
 

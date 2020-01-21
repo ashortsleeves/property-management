@@ -125,6 +125,48 @@ form {
   .town-show {
     display: block;
   }
+
+  .img-wrap {
+    position: relative;
+    display: inline-block;
+
+    .beleted {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+
+      i {
+        color: white;
+        position: absolute;
+        top: 4px;
+        left: 2px;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+
+      input {
+        position: relative;
+        background: transparent;
+        color: transparent;
+        padding: 0;
+        border: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 999;
+        cursor: pointer;
+      }
+
+      &:hover,
+      &:focus {
+        i {
+          color: #F20732;
+        }
+      }
+    }
+  }
 }
 
 table {
