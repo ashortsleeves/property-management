@@ -129,6 +129,11 @@ form {
   .img-wrap {
     position: relative;
     display: inline-block;
+    width: 150px;
+    height: 125px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
     .beleted {
       position: absolute;
@@ -147,25 +152,90 @@ form {
         cursor: pointer;
       }
 
-      input {
-        position: relative;
-        background: transparent;
-        color: transparent;
-        padding: 0;
-        border: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 999;
+      input[type=checkbox] {
+        display:none;
         cursor: pointer;
-      }
 
-      &:hover,
-      &:focus {
-        i {
-          color: #F20732;
+        + label {
+          cursor: pointer;
+        }
+
+        + label:before {
+          font-family: "Font Awesome 5 Free";
+          display: inline-block;
+          color: rgba($white, 0.7);
+          content: "\f057";
+          transition: 0.3s;
+          position: relative;
+          z-index: 999;
+          cursor: pointer;
+        }
+
+        + label:after {
+          display: block;
+          content: " ";
+          background-color: rgba($white, 0.0);
+          height: 19px;
+          width: 19px;
+          position: absolute;
+          top: 2px;
+          right: 3px;
+          border-radius: 45px;
+          cursor: pointer;
+        }
+
+        &:hover,
+        &:focus {
+          + label:before {
+            font-weight: 900;
+
+            &:before {
+               color: rgba($red, 0.7);
+             }
+
+             &:after {
+               display: block;
+               content: " ";
+               background-color: rgba($white, 0.7);
+               height: 19px;
+               width: 19px;
+               position: absolute;
+               top: 2px;
+               right: 3px;
+               border-radius: 45px;
+             }
+          }
         }
       }
+
+      input[type=checkbox]:checked {
+        + label:before {
+           color: $red;
+           font-weight: 900;
+        }
+
+        + label:after {
+          background-color: $white;
+        }
+      }
+
+
     }
+  }
+}
+
+.alert {
+  position: relative;
+
+  span {
+    position: absolute;
+    top: 15px;
+    right: 0;
+    display: block;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: $red;
+    color: $white;
   }
 }
 
@@ -188,8 +258,4 @@ table {
       background-color: #efefef;
     }
   }
-}
-
-img.img-preview {
-  width: 150px;
 }

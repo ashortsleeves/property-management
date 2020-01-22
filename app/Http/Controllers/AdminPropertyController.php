@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Property;
 use App\Town;
 use App\State;
@@ -22,85 +23,13 @@ class AdminPropertyController extends Controller
     {
       $towns = Town::pluck('name', 'id')->all();
       $towns = Town::all();
-
       $states = State::pluck('name', 'id')->all();
-
-      $pets = array(
-        'dogs negotiable' => 'dogs negotiable',
-        'cats negotiable' => 'cats negotiable',
-        'pets negotiable' => 'pets negotiable',
-        'not allowed'     => 'not allowed'
-      );
-
-      $washerdryer = array(
-        'coin-op'          => 'coin-op',
-        'hook-ups'         => 'hook-ups',
-        'machines in unit' => 'machines in unit',
-        'none'             => 'none'
-      );
-
-      $statesList = array(
-        'Alabama' => 'Alabama',
-        'Alaska' => 'Alaska',
-        'American Samoa' => 'American Samoa',
-        'Arizona' => 'Arizona',
-        'Arkansas' => 'Arkansas',
-        'California' =>'California',
-        'Colorado'=>'Colorado',
-        'Connecticut'=>'Connecticut',
-        'Delaware'=>'Delaware',
-        'District of Columbia'=>'District of Columbia',
-        'Florida'=>'Florida',
-        'Georgia'=>'Georgia',
-        'Guam'=>'Guam',
-        'Hawaii'=>'Hawaii',
-        'Idaho'=>'Idaho',
-        'Illinois'=>'Illinois',
-        'Indiana'=>'Indiana',
-        'Iowa'=>'Iowa',
-        'Kansas'=>'Kansas',
-        'Kentucky'=>'Kentucky',
-        'Louisiana'=>'Louisiana',
-        'Maine'=>'Maine',
-        'Maryland'=>'Maryland',
-        'Massachusetts'=>'Massachusetts',
-        'Michigan'=>'Michigan',
-        'Minnesota'=>'Minnesota',
-        'Minor Outlying Islands'=>'Minor Outlying Islands',
-        'Mississippi'=>'Mississippi',
-        'Missouri'=>'Missouri',
-        'Montana'=>'Montana',
-        'Nebraska'=>'Nebraska',
-        'Nevada'=>'Nevada',
-        'New Hampshire'=>'New Hampshire',
-        'New Jersey'=>'New Jersey',
-        'New Mexico'=>'New Mexico',
-        'New York'=>'New York',
-        'North Carolina'=>'North Carolina',
-        'North Dakota'=>'North Dakota',
-        'Northern Mariana Islands'=>'Northern Mariana Islands',
-        'Ohio'=>'Ohio',
-        'Oklahoma'=>'Oklahoma',
-        'Oregon'=>'Oregon',
-        'Pennsylvania'=>'Pennsylvania',
-        'Puerto Rico'=>'Puerto Rico',
-        'Rhode Island'=>'Rhode Island',
-        'South Carolina'=>'South Carolina',
-        'South Dakota'=>'South Dakota',
-        'Tennessee'=>'Tennessee',
-        'Texas'=>'Texas',
-        'U.S. Virgin Islands'=>'U.S. Virgin Islands',
-        'Utah'=>'Utah',
-        'Vermont'=>'Vermont',
-        'Virginia'=>'Virginia',
-        'Washington'=>'Washington',
-        'West Virginia'=>'West Virginia',
-        'Wisconsin'=>'Wisconsin',
-        'Wyoming'=>'Wyoming'
-      );
-
+      $pets = config('app.pets');
+      $washerdryer = config('app.washerDryer');
+      $statesList = config('app.statesList');
       $newTownId = rand(1,99999);
       $newStateId = rand(1,99999);
+
       return view('admin.property.create', compact('towns', 'newTownId', 'states', 'newStateId', 'statesList', 'washerdryer', 'pets'));
     }
 
@@ -149,87 +78,15 @@ class AdminPropertyController extends Controller
     public function edit($id)
     {
       $property = Property::findOrFail($id);
-
-
       $states = State::pluck('name', 'id')->all();
       $towns = Town::pluck('name', 'id')->all();
       $towns = Town::all();
-      $pets = array(
-        'dogs negotiable' => 'dogs negotiable',
-        'cats negotiable' => 'cats negotiable',
-        'pets negotiable' => 'pets negotiable',
-        'not allowed'     => 'not allowed'
-      );
-
-      $washerdryer = array(
-        'coin-op'          => 'coin-op',
-        'hook-ups'         => 'hook-ups',
-        'machines in unit' => 'machines in unit',
-        'none'             => 'none'
-      );
-
-      $statesList = array(
-        'Alabama' => 'Alabama',
-        'Alaska' => 'Alaska',
-        'American Samoa' => 'American Samoa',
-        'Arizona' => 'Arizona',
-        'Arkansas' => 'Arkansas',
-        'California' =>'California',
-        'Colorado'=>'Colorado',
-        'Connecticut'=>'Connecticut',
-        'Delaware'=>'Delaware',
-        'District of Columbia'=>'District of Columbia',
-        'Florida'=>'Florida',
-        'Georgia'=>'Georgia',
-        'Guam'=>'Guam',
-        'Hawaii'=>'Hawaii',
-        'Idaho'=>'Idaho',
-        'Illinois'=>'Illinois',
-        'Indiana'=>'Indiana',
-        'Iowa'=>'Iowa',
-        'Kansas'=>'Kansas',
-        'Kentucky'=>'Kentucky',
-        'Louisiana'=>'Louisiana',
-        'Maine'=>'Maine',
-        'Maryland'=>'Maryland',
-        'Massachusetts'=>'Massachusetts',
-        'Michigan'=>'Michigan',
-        'Minnesota'=>'Minnesota',
-        'Minor Outlying Islands'=>'Minor Outlying Islands',
-        'Mississippi'=>'Mississippi',
-        'Missouri'=>'Missouri',
-        'Montana'=>'Montana',
-        'Nebraska'=>'Nebraska',
-        'Nevada'=>'Nevada',
-        'New Hampshire'=>'New Hampshire',
-        'New Jersey'=>'New Jersey',
-        'New Mexico'=>'New Mexico',
-        'New York'=>'New York',
-        'North Carolina'=>'North Carolina',
-        'North Dakota'=>'North Dakota',
-        'Northern Mariana Islands'=>'Northern Mariana Islands',
-        'Ohio'=>'Ohio',
-        'Oklahoma'=>'Oklahoma',
-        'Oregon'=>'Oregon',
-        'Pennsylvania'=>'Pennsylvania',
-        'Puerto Rico'=>'Puerto Rico',
-        'Rhode Island'=>'Rhode Island',
-        'South Carolina'=>'South Carolina',
-        'South Dakota'=>'South Dakota',
-        'Tennessee'=>'Tennessee',
-        'Texas'=>'Texas',
-        'U.S. Virgin Islands'=>'U.S. Virgin Islands',
-        'Utah'=>'Utah',
-        'Vermont'=>'Vermont',
-        'Virginia'=>'Virginia',
-        'Washington'=>'Washington',
-        'West Virginia'=>'West Virginia',
-        'Wisconsin'=>'Wisconsin',
-        'Wyoming'=>'Wyoming'
-      );
-
+      $pets = config('app.pets');
+      $washerdryer = config('app.washerDryer');
+      $statesList = config('app.statesList');
       $newTownId = rand(1,99999);
       $newStateId = rand(1,99999);
+
       return view('admin.property.edit', compact('property', 'towns', 'newTownId', 'states', 'newStateId', 'statesList', 'washerdryer', 'pets'));
     }
 
@@ -253,7 +110,6 @@ class AdminPropertyController extends Controller
 
       $newProp = Property::findOrFail($id);
       $featimg = $request->input('featured');
-
 
       if($featimg) {
         Photo::where('property_id', $id)
@@ -287,13 +143,20 @@ class AdminPropertyController extends Controller
         }
       }
 
-
-
+      $photoDelete = $request->input('delete');
+      if($photoDelete) {
+        foreach($photoDelete as $photoId) {
+          $photo = Photo::findOrFail($photoId);
+          unlink(public_path() . $photo->file);
+          $photo->delete();
+        }
+      }
 
       Property::findOrFail($id)->update($request->all());
 
-      return redirect('/admin/property');
+      Session::flash('message', 'property has been updated');
 
+      return back();
     }
 
 
@@ -302,6 +165,7 @@ class AdminPropertyController extends Controller
       $property = Property::findBySlugOrFail($slug);
       $photos = $property->photos()->get();
       $town = $property->town()->get();
+
       return view('public.property.property', compact('property', 'photos', 'town'));
     }
 

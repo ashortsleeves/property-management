@@ -21,7 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/properties/{id}', ['as'=>'home.property', 'uses'=>'AdminPropertyController@property']);
 Route::get('/properties', ['as'=>'home.properties', 'uses'=>'AdminPropertyController@properties']);
 
-
 Route::group(['middleware'=>'admin'], function(){
   Route::get('/admin', function(){
     return view('admin.index');

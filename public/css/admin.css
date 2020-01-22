@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /** Import Bootstrap functions */
 
 /*
@@ -362,6 +364,11 @@ form .town-show {
 form .img-wrap {
   position: relative;
   display: inline-block;
+  width: 150px;
+  height: 125px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 form .img-wrap .beleted {
@@ -383,21 +390,85 @@ form .img-wrap .beleted i {
   cursor: pointer;
 }
 
-form .img-wrap .beleted input {
+form .img-wrap .beleted input[type=checkbox] {
+  display: none;
+  cursor: pointer;
+}
+
+form .img-wrap .beleted input[type=checkbox] + label {
+  cursor: pointer;
+}
+
+form .img-wrap .beleted input[type=checkbox] + label:before {
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.7);
+  content: "\F057";
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   position: relative;
-  background: transparent;
-  color: transparent;
-  padding: 0;
-  border: 0;
-  height: 100%;
-  width: 100%;
   z-index: 999;
   cursor: pointer;
 }
 
-form .img-wrap .beleted:hover i,
-form .img-wrap .beleted:focus i {
-  color: #F20732;
+form .img-wrap .beleted input[type=checkbox] + label:after {
+  display: block;
+  content: " ";
+  background-color: rgba(255, 255, 255, 0);
+  height: 19px;
+  width: 19px;
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  border-radius: 45px;
+  cursor: pointer;
+}
+
+form .img-wrap .beleted input[type=checkbox]:hover + label:before,
+form .img-wrap .beleted input[type=checkbox]:focus + label:before {
+  font-weight: 900;
+}
+
+form .img-wrap .beleted input[type=checkbox]:hover + label:before:before,
+form .img-wrap .beleted input[type=checkbox]:focus + label:before:before {
+  color: rgba(220, 53, 69, 0.7);
+}
+
+form .img-wrap .beleted input[type=checkbox]:hover + label:before:after,
+form .img-wrap .beleted input[type=checkbox]:focus + label:before:after {
+  display: block;
+  content: " ";
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 19px;
+  width: 19px;
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  border-radius: 45px;
+}
+
+form .img-wrap .beleted input[type=checkbox]:checked + label:before {
+  color: #dc3545;
+  font-weight: 900;
+}
+
+form .img-wrap .beleted input[type=checkbox]:checked + label:after {
+  background-color: #fff;
+}
+
+.alert {
+  position: relative;
+}
+
+.alert span {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  display: block;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #dc3545;
+  color: #fff;
 }
 
 table th,
@@ -413,9 +484,5 @@ table th {
 
 table tr:nth-of-type(even) {
   background-color: #efefef;
-}
-
-img.img-preview {
-  width: 150px;
 }
 

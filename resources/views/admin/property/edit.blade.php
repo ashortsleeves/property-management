@@ -10,7 +10,7 @@
 
   {!! Form::model($property, ['method'=>'PATCH', 'action'=> [ 'AdminPropertyController@update', $property->id], 'files' => true])!!}
 
-  {!! Form::open(['method'=>'POST', 'action'=> 'AdminPropertyController@store', 'files'=>true, 'autocomplete'=>"off"])!!}
+  {!! Form::open(['method'=>'POST', 'id'=>'myForm', 'action'=> 'AdminPropertyController@store', 'files'=>true, 'autocomplete'=>"off"])!!}
     <div class="form-group">
         {!!Form::label('address', 'Address: ')!!}
         {!!Form::text('address', null, ['class'=>'form-control'])!!}
@@ -27,8 +27,6 @@
       {!!Form::label('state_new', 'New State: ')!!}
       {!!Form::select('state_new', ['' => 'Choose Option'] + $statesList, null, ['class'=>'form-control'])!!}
     </div>
-
-{{-- selected="selected" --}}
 
     <div class="form-group">
       {!!Form::label('town_id', 'Town: ')!!}
@@ -67,6 +65,16 @@
       {!!Form::label('pets', 'Pets: ')!!}
       {!!Form::select('pets', ['' => 'Choose Option'] + $pets, null, ['class'=>'form-control'])!!}
     </div>
+
+
+
+
+
+
+
+
+
+
     <div class="form-group">
       {!!Form::label('file', 'File: ')!!}
 
@@ -74,18 +82,28 @@
       <div id="selectedFiles">
 
       </div>
-      @foreach($property->photos as $photo )
 
-        <div class="img-wrap">
-          <input {{ $photo->featured == 1 ? 'checked="checked"' : ''}} type="radio" name="featured" value="{{ str_replace('/images/', '', $photo->file) }}">
-          <img class="img-preview" src="{{$photo->file}}" />
-          <span class="beleted">
-            <input name="delete" type="button" href="#" value="{{$photo->id}}" /><i class="fas fa-times-circle"></i>
-          </span>
 
-        </div>
+      @if($property->photos)
 
-      @endforeach
+        <h3>Current Photos</h3>
+
+        @foreach($property->photos as $photo )
+
+          <div class="img-wrap" style="background-image: url({{$photo->file}})">
+
+            <input {{ $photo->featured == 1 ? 'checked="checked"' : ''}} type="radio" name="featured" value="{{ str_replace('/images/', '', $photo->file) }}">
+
+            <span class="beleted">
+              <input id="box{{$loop->iteration}}" name="delete[{{$photo->id}}]" type="checkbox" href="#" value="{{$photo->id}}" />
+              <label for="box{{$loop->iteration}}"></label>
+            </span>
+
+          </div>
+
+        @endforeach
+
+      @endif
     </div>
 
     <div class="form-group">
@@ -111,5 +129,7 @@
 @endsection
 
 @section('scripts')
+  {{-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> --}}
+
   <script src="{{asset('js/admin-properties.js')}}"></script>
 @endsection

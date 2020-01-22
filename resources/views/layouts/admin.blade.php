@@ -51,7 +51,12 @@
         </li>
       </ul>
       <div class="content">
-        <h1 class="title">{{ucfirst(str_replace('admin/', '', Request::path()))}}</h1>
+        @if(Session::has('message'))
+          <div class="alert">
+            <span>{{session('message')}}</span>
+
+          </div>
+        @endif
         @yield('content')
       </div>
     </div>
