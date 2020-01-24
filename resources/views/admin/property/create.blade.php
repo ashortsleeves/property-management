@@ -9,7 +9,7 @@
   <h1>Property Create</h1>
 
 
-  {!! Form::open(['method'=>'POST', 'action'=> 'AdminPropertyController@store', 'files'=>true, 'autocomplete'=>"off"])!!}
+  {!! Form::open(['method'=>'POST','id'=>'propertyForm', 'action'=> 'AdminPropertyController@store', 'files'=>true, 'autocomplete'=>"off"])!!}
     <div class="form-group">
         {!!Form::label('address', 'Address: ')!!}
         {!!Form::text('address', null, ['class'=>'form-control'])!!}
@@ -94,5 +94,6 @@
 @endsection
 
 @section('scripts')
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script src="{{asset('js/admin-properties.js')}}"></script>
 @endsection

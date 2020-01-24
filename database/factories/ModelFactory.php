@@ -77,16 +77,16 @@ $factory->define(Property::class, function (Faker $faker) {
 $factory->define(Photo::class, function (Faker $faker){
   return [
     'file' => $faker->randomElement([
-      'placeholder-0.jpg',
-      'placeholder-1.jpg',
-      'placeholder-2.jpg',
-      'placeholder-3.jpg',
-      'placeholder-4.jpg',
-      'placeholder-5.jpg',
-      'placeholder-6.jpg',
-      'placeholder-7.jpg',
-      'placeholder-8.jpg',
-      'placeholder-9.jpg',
+      '/images/placeholder-0.jpg',
+      '/images/placeholder-1.jpg',
+      '/images/placeholder-2.jpg',
+      '/images/placeholder-3.jpg',
+      '/images/placeholder-4.jpg',
+      '/images/placeholder-5.jpg',
+      '/images/placeholder-6.jpg',
+      '/images/placeholder-7.jpg',
+      '/images/placeholder-8.jpg',
+      '/images/placeholder-9.jpg',
     ]),
     'featured' => 1,
   ];

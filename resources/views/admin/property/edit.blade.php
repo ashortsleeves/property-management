@@ -10,7 +10,7 @@
 
   {!! Form::model($property, ['method'=>'PATCH', 'action'=> [ 'AdminPropertyController@update', $property->id], 'files' => true])!!}
 
-  {!! Form::open(['method'=>'POST', 'id'=>'myForm', 'action'=> 'AdminPropertyController@store', 'files'=>true, 'autocomplete'=>"off"])!!}
+  {!! Form::open(['method'=>'POST', 'id'=>'propForm2', 'action'=> 'AdminPropertyController@store', 'files'=>true, 'autocomplete'=>"off"])!!}
     <div class="form-group">
         {!!Form::label('address', 'Address: ')!!}
         {!!Form::text('address', null, ['class'=>'form-control'])!!}
@@ -78,7 +78,7 @@
     <div class="form-group">
       {!!Form::label('file', 'File: ')!!}
 
-      <input name="media[]" type="file" id="media" multiple accept="image/*">
+      <input name="media[]" type="file" id="media" multiple>
       <div id="selectedFiles">
 
       </div>
@@ -129,7 +129,7 @@
 @endsection
 
 @section('scripts')
-  {{-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> --}}
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
   <script src="{{asset('js/admin-properties.js')}}"></script>
 @endsection

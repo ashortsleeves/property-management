@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use App\Property;
 use App\Town;
 use App\State;
@@ -62,9 +63,16 @@ class AdminPropertyController extends Controller
           }
 
           $name = time() . $media->getClientOriginalName();
-          $media->move('images', $name);
+          // $media->move('images', $name);
+
+
+          $filePath = 'images/' . $name;
+          Storage::disk('s3')->put($filePath, file_get_contents($media));
+
+
+
           $photo = Photo::create([
-            'file'        => $name,
+            'file'        => env('AWS_URL').'/'.$filePath,
             'property_id' => $newProp->id,
             'featured' => $featured
           ]);
@@ -133,10 +141,14 @@ class AdminPropertyController extends Controller
           }
 
           $name = time() . $media->getClientOriginalName();
-          $media->move('images', $name);
+
+          $filePath = 'images/' . $name;
+          Storage::disk('s3')->put($filePath, file_get_contents($media));
+
+
 
           $photo = Photo::create([
-            'file'        => $name,
+            'file'        => env('AWS_URL').'/'.$filePath,
             'property_id' => $newProp->id,
             'featured' => $featured
           ]);
@@ -144,10 +156,16 @@ class AdminPropertyController extends Controller
       }
 
       $photoDelete = $request->input('delete');
+
       if($photoDelete) {
         foreach($photoDelete as $photoId) {
+
           $photo = Photo::findOrFail($photoId);
-          unlink(public_path() . $photo->file);
+
+          $photoFile = str_replace(env('AWS_URL').'/', '', $photo->file);
+
+          Storage::disk('s3')->delete($photoFile);
+
           $photo->delete();
         }
       }

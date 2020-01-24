@@ -17,7 +17,7 @@
       <tr>
         <td>{{$photo->id}}</td>
         <td>{{$photo->file}}</td>
-        <td><img src="{{$photo->file}}" alt=" " /></td>
+        <td><img src="{!!$photo->file!!}" alt=" " /></td>
         <td>{{$photo->created_at}}</td>
       </tr>
     @endforeach
