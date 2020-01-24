@@ -10,7 +10,7 @@
 
   {!! Form::model($property, ['method'=>'PATCH', 'action'=> [ 'AdminPropertyController@update', $property->id], 'files' => true])!!}
 
-  {!! Form::open(['method'=>'POST', 'id'=>'propForm2', 'action'=> 'AdminPropertyController@store', 'files'=>true, 'autocomplete'=>"off"])!!}
+  {!! Form::open(['method'=>'POST', 'action'=> 'AdminPropertyController@store', 'files'=>true, 'autocomplete'=>"off"])!!}
     <div class="form-group">
         {!!Form::label('address', 'Address: ')!!}
         {!!Form::text('address', null, ['class'=>'form-control'])!!}
@@ -61,24 +61,20 @@
       {!!Form::label('washer_dryer', 'Washer/Dryer: ')!!}
       {!!Form::select('washer_dryer', ['' => 'Choose Option'] + $washerdryer, null, ['class'=>'form-control'])!!}
     </div>
+
+
     <div class="form-group">
       {!!Form::label('pets', 'Pets: ')!!}
       {!!Form::select('pets', ['' => 'Choose Option'] + $pets, null, ['class'=>'form-control'])!!}
     </div>
 
-
-
-
-
-
-
-
-
-
     <div class="form-group">
       {!!Form::label('file', 'File: ')!!}
+      <div class="form-group-media">
+        <a class="btn btn-file" href="#">Add Images<input name="media[]" type="file" class="media" multiple></a>
+      </div>
 
-      <input name="media[]" type="file" id="media" multiple>
+
       <div id="selectedFiles">
 
       </div>

@@ -332,6 +332,21 @@ input.btn:focus,
   background-color: #0092cc;
 }
 
+.btn-file {
+  position: relative;
+}
+
+.btn-file input.media {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+
 ul.pagination {
   display: -webkit-box;
   display: flex;
