@@ -347,6 +347,22 @@ input.btn:focus,
   width: 100%;
 }
 
+input.btn-danger,
+button.btn-danger,
+.btn-danger {
+  background-color: #dc3545;
+  cursor: pointer;
+}
+
+input.btn-danger:hover,
+input.btn-danger:focus,
+button.btn-danger:hover,
+button.btn-danger:focus,
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: rgba(220, 53, 69, 0.7);
+}
+
 ul.pagination {
   display: -webkit-box;
   display: flex;

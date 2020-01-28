@@ -22,24 +22,6 @@ Route::get('/properties/{id}', ['as'=>'home.property', 'uses'=>'AdminPropertyCon
 Route::get('/properties', ['as'=>'home.properties', 'uses'=>'AdminPropertyController@properties']);
 
 
-
-
-
-// Route::get('admin/upload', function() {
-//   return view('admin.upload');
-// });
-//
-// Route::post('upload', function(){
-//   request()->file('file')->store(
-//     'images',
-//     's3'
-//   );
-// })->name('upload');
-//
-//
-
-
-
 Route::group(['middleware'=>'admin'], function(){
   Route::get('/admin', function(){
     return view('admin.index');

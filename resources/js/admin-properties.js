@@ -48,3 +48,9 @@ $('.form-group-media').on('click', '.media', function(){
 });
 
 featStar();
+
+
+$('.delete').click(function() {
+  $(this).hide();
+  $('.form-delete').show();
+});

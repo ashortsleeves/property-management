@@ -35,3 +35,15 @@ input.btn,
     width: 100%;
   }
 }
+
+input.btn-danger,
+button.btn-danger,
+.btn-danger  {
+  background-color: $red;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: rgba($red, 0.7);
+  }
+}

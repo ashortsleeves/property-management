@@ -113,6 +113,19 @@
       {!!Form::submit('Update ', ['class'=>'btn btn-primary'])!!}
     </div>
   {!!Form::close()!!}
+  <div class="property-delete">
+    <a class="delete">Delete Property</a>
+    {!!Form::open(['method'=>'DELETE', 'class'=>'form-delete','action'=>['AdminPropertyController@destroy', $property->id]])!!}
+      <p><strong>Warning:</strong> you are about to delete this property along with all associated images and files. Are you sure you want to do this?</p>
+      <br />
+      <div class="form-group">
+        {!! Form::label('agree', 'I Understand: ') !!}
+        {!! Form::checkbox('agree') !!}
+
+      </div>
+      {!!Form::submit('Delete Property', ['class'=>'btn btn-danger'])!!}
+    {!!Form::close()!!}
+  </div>
 
   @if(count($errors) > 0)
     <div class="alert alert-danger">

@@ -162,13 +162,9 @@ form {
     }
   }
 
-
-
   h2 {
     margin: 30px 0 15px;
   }
-
-
 
   .town,
   .form-hidden {
@@ -305,6 +301,43 @@ form {
           background-color: $white;
         }
       }
+    }
+  }
+}
+
+.property-delete {
+  a.delete {
+    color: $red;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  form.form-delete {
+    display: none;
+    padding: 15px;
+    margin: 30px 0;
+    -webkit-box-shadow: 10px 10px 29px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 29px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 29px 0px rgba(0,0,0,0.75);
+
+    label,
+    input {
+      display: inline;
+      // font-size: 18px;
+      font-weight: 900;
+      color: $red;
+      margin-bottom: 0;
+      margin-right: 10px;
+    }
+
+    input {
+      color: $white;
     }
   }
 }

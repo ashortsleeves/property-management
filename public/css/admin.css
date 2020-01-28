@@ -347,6 +347,22 @@ input.btn:focus,
   width: 100%;
 }
 
+input.btn-danger,
+button.btn-danger,
+.btn-danger {
+  background-color: #dc3545;
+  cursor: pointer;
+}
+
+input.btn-danger:hover,
+input.btn-danger:focus,
+button.btn-danger:hover,
+button.btn-danger:focus,
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: rgba(220, 53, 69, 0.7);
+}
+
 ul.pagination {
   display: -webkit-box;
   display: flex;
@@ -848,6 +864,38 @@ form .img-wrap span.beleted input[type=checkbox]:checked + label:before {
 
 form .img-wrap span.beleted input[type=checkbox]:checked + label:after {
   background-color: #fff;
+}
+
+.property-delete a.delete {
+  color: #dc3545;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.property-delete a.delete:hover,
+.property-delete a.delete:focus {
+  text-decoration: underline;
+}
+
+.property-delete form.form-delete {
+  display: none;
+  padding: 15px;
+  margin: 30px 0;
+  box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.75);
+}
+
+.property-delete form.form-delete label,
+.property-delete form.form-delete input {
+  display: inline;
+  font-weight: 900;
+  color: #dc3545;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+.property-delete form.form-delete input {
+  color: #fff;
 }
 
 .alert {

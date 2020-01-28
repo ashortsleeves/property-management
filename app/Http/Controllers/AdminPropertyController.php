@@ -10,6 +10,7 @@ use App\Town;
 use App\State;
 use App\Photo;
 use App\Http\Requests\PropertyCreateRequest;
+use App\Http\Requests\PropertyDeleteRequest;
 
 class AdminPropertyController extends Controller
 {
@@ -81,7 +82,6 @@ class AdminPropertyController extends Controller
 
       return redirect('/admin/property');
     }
-
 
     public function edit($id)
     {
@@ -177,6 +177,24 @@ class AdminPropertyController extends Controller
       return back();
     }
 
+    public function destroy(PropertyDeleteRequest $request, $id)
+    {
+      $input = $request->all();
+      $property = Property::findOrFail($id);
+      $photos = $property->photos()->get();
+
+      foreach($photos as $photo) {
+        $photoFile = str_replace(env('AWS_URL').'/', '', $photo->file);
+
+        Storage::disk('s3')->delete($photoFile);
+
+        $photo->delete();
+      }
+
+      $property->delete();
+
+      return redirect('/admin/property');
+    }
 
     public function property($slug)
     {

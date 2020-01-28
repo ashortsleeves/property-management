@@ -139,6 +139,10 @@ $('.form-group-media').on('click', '.media', function () {
   $(this).change(handleFileSelect);
 });
 featStar();
+$('.delete').click(function () {
+  $(this).hide();
+  $('.form-delete').show();
+});
 
 /***/ }),
 
