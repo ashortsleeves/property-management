@@ -93,6 +93,13 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+function featStar() {
+  $('span.featimg').click(function () {
+    $('span.featimg').removeClass('featured-true');
+    $(this).addClass('featured-true');
+  });
+}
+
 function handleFileSelect(e) {
   if (!e.target.files || !window.FileReader) return;
   var files = e.target.files;
@@ -114,8 +121,10 @@ function handleFileSelect(e) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
-      var html = "<div class='img-wrap' style='background-image: url(" + e.target.result + ")'><input " + checked + " type='radio' name='featured' value='" + f.name + "'></div>";
+      $('span.featimg').removeClass('featured-true');
+      var html = "<div class='img-wrap' style='background-image: url(" + e.target.result + ")'><span class='featimg featured-true'><input " + checked + " type='radio' name='featured' value='" + f.name + "'></span></div>";
       $('#selectedFiles').append(html);
+      featStar();
     };
 
     reader.readAsDataURL(f);
@@ -129,6 +138,7 @@ $('.form-group-media').on('click', '.media', function () {
   $(this).parent().addClass('form-hidden');
   $(this).change(handleFileSelect);
 });
+featStar();
 
 /***/ }),
 

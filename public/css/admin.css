@@ -668,6 +668,51 @@ ul.sidebar li.menu-item.active ul.submenu li a:focus {
   background-color: #efefef;
 }
 
+form .form-group {
+  margin-bottom: 15px;
+}
+
+form .form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+form .form-group .form-control {
+  display: block;
+  width: 300px;
+  max-width: 100%;
+  border: solid 1px #efefef;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+form .form-group select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Remove default arrow */
+  background: url("/images/caret-down.png") 96%/15px no-repeat #fff;
+}
+
+form .form-group-files {
+  margin-top: 30px;
+}
+
+form .form-group-files .form-group-media {
+  margin-bottom: 15px;
+}
+
+form .form-group-files h3 {
+  margin: 15px 0;
+}
+
+form h2 {
+  margin: 30px 0 15px;
+}
+
 form .town,
 form .form-hidden {
   display: none;
@@ -687,7 +732,40 @@ form .img-wrap {
   background-repeat: no-repeat;
 }
 
-form .img-wrap .beleted {
+form .img-wrap span.featimg {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+form .img-wrap span.featimg::before {
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.7);
+  content: "\F005";
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  position: absolute;
+}
+
+form .img-wrap span.featimg input[type=radio] {
+  opacity: 0;
+  position: relative;
+  z-index: 999;
+  height: 20px;
+  width: 20px;
+}
+
+form .img-wrap span.featured-true::before {
+  font-weight: 900;
+  color: #ffc107;
+  text-shadow: 2px 2px 6px #000000;
+}
+
+form .img-wrap span.beleted {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -696,7 +774,7 @@ form .img-wrap .beleted {
   cursor: pointer;
 }
 
-form .img-wrap .beleted i {
+form .img-wrap span.beleted i {
   color: white;
   position: absolute;
   top: 4px;
@@ -706,16 +784,16 @@ form .img-wrap .beleted i {
   cursor: pointer;
 }
 
-form .img-wrap .beleted input[type=checkbox] {
+form .img-wrap span.beleted input[type=checkbox] {
   display: none;
   cursor: pointer;
 }
 
-form .img-wrap .beleted input[type=checkbox] + label {
+form .img-wrap span.beleted input[type=checkbox] + label {
   cursor: pointer;
 }
 
-form .img-wrap .beleted input[type=checkbox] + label:before {
+form .img-wrap span.beleted input[type=checkbox] + label:before {
   font-family: "Font Awesome 5 Free";
   display: inline-block;
   color: rgba(255, 255, 255, 0.7);
@@ -727,48 +805,48 @@ form .img-wrap .beleted input[type=checkbox] + label:before {
   cursor: pointer;
 }
 
-form .img-wrap .beleted input[type=checkbox] + label:after {
+form .img-wrap span.beleted input[type=checkbox] + label:after {
   display: block;
   content: " ";
   background-color: rgba(255, 255, 255, 0);
-  height: 19px;
-  width: 19px;
+  height: 20px;
+  width: 20px;
   position: absolute;
   top: 2px;
-  right: 3px;
+  right: 2px;
   border-radius: 45px;
   cursor: pointer;
 }
 
-form .img-wrap .beleted input[type=checkbox]:hover + label:before,
-form .img-wrap .beleted input[type=checkbox]:focus + label:before {
+form .img-wrap span.beleted input[type=checkbox]:hover + label:before,
+form .img-wrap span.beleted input[type=checkbox]:focus + label:before {
   font-weight: 900;
 }
 
-form .img-wrap .beleted input[type=checkbox]:hover + label:before:before,
-form .img-wrap .beleted input[type=checkbox]:focus + label:before:before {
+form .img-wrap span.beleted input[type=checkbox]:hover + label:before:before,
+form .img-wrap span.beleted input[type=checkbox]:focus + label:before:before {
   color: rgba(220, 53, 69, 0.7);
 }
 
-form .img-wrap .beleted input[type=checkbox]:hover + label:before:after,
-form .img-wrap .beleted input[type=checkbox]:focus + label:before:after {
+form .img-wrap span.beleted input[type=checkbox]:hover + label:before:after,
+form .img-wrap span.beleted input[type=checkbox]:focus + label:before:after {
   display: block;
   content: " ";
   background-color: rgba(255, 255, 255, 0.7);
-  height: 19px;
-  width: 19px;
+  height: 20px;
+  width: 20px;
   position: absolute;
   top: 2px;
-  right: 3px;
+  right: 2px;
   border-radius: 45px;
 }
 
-form .img-wrap .beleted input[type=checkbox]:checked + label:before {
+form .img-wrap span.beleted input[type=checkbox]:checked + label:before {
   color: #dc3545;
   font-weight: 900;
 }
 
-form .img-wrap .beleted input[type=checkbox]:checked + label:after {
+form .img-wrap span.beleted input[type=checkbox]:checked + label:after {
   background-color: #fff;
 }
 

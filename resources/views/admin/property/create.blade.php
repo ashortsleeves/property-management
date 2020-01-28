@@ -64,10 +64,12 @@
       {!!Form::label('pets', 'Pets: ')!!}
       {!!Form::select('pets', ['' => 'Choose Option'] + $pets, null, ['class'=>'form-control'])!!}
     </div>
-    <div class="form-group">
-      {!!Form::label('file', 'File: ')!!}
+    <div class="form-group form-group-files">
+      {!!Form::label('file', 'Gallery: ')!!}
 
-      <input name="media[]" type="file" id="media" multiple accept="image/*">
+      <div class="form-group-media">
+        <a class="btn btn-file" href="#">Add Images<input name="media[]" type="file" class="media" multiple></a>
+      </div>
       <div id="selectedFiles"></div>
     </div>
 

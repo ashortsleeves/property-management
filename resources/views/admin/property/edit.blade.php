@@ -68,8 +68,8 @@
       {!!Form::select('pets', ['' => 'Choose Option'] + $pets, null, ['class'=>'form-control'])!!}
     </div>
 
-    <div class="form-group">
-      {!!Form::label('file', 'File: ')!!}
+    <div class="form-group form-group-files">
+      {!!Form::label('file', 'Gallery: ')!!}
       <div class="form-group-media">
         <a class="btn btn-file" href="#">Add Images<input name="media[]" type="file" class="media" multiple></a>
       </div>
@@ -88,7 +88,10 @@
 
           <div class="img-wrap" style="background-image: url({{$photo->file}})">
 
-            <input {{ $photo->featured == 1 ? 'checked="checked"' : ''}} type="radio" name="featured" value="{{ str_replace('/images/', '', $photo->file) }}">
+            <span class="featimg {{ $photo->featured == 1 ? 'featured-true' : ''}}">
+              <input {{ $photo->featured == 1 ? 'checked="checked"' : ''}} type="radio" name="featured" value="{{ $photo->file }}">
+            </span>
+
 
             <span class="beleted">
               <input id="box{{$loop->iteration}}" name="delete[{{$photo->id}}]" type="checkbox" href="#" value="{{$photo->id}}" />
