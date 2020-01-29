@@ -19267,6 +19267,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$('a.hamburger').click(function () {
+  $(this).toggleClass('hamburger-active');
+  $('.sideNavBody').toggleClass('sideNav-open');
+  $('.sideNavBody').toggleClass('sideNavBody-push');
+});
+
 /***/ }),
 
 /***/ "./resources/sass/admin.scss":

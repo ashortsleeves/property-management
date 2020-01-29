@@ -134,7 +134,7 @@ function handleFileSelect(e) {
 }
 
 $('.form-group-media').on('click', '.media', function () {
-  $('.form-group-media').prepend('<a class="btn btn-file" href="#">Add More Images<input name="media[]" type="file" class="media" multiple></a>');
+  $('.form-group-media').prepend('<a class="btn btn-file" href="#form-group-files">Add More Images<input name="media[]" type="file" class="media" multiple></a>');
   $(this).parent().addClass('form-hidden');
   $(this).change(handleFileSelect);
 });

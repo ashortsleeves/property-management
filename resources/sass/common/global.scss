@@ -65,16 +65,6 @@ a {
   }
 }
 
-ul.nav {
-  list-style-type: none;
-  padding: 0;
-
-  .sub-menu {
-    list-style-type: none;
-    padding: 0;
-  }
-}
-
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -178,6 +168,254 @@ ul {
   &-12 {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  @include phablet {
+    &-sm-1 {
+      flex: 0 0 8.333333333%;
+      max-width: 8.333333333%;
+    }
+
+    &-sm-2 {
+      flex: 0 0 16.666666666%;
+      max-width: 16.666666666%;
+    }
+
+    &-sm-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+
+    &-sm-4 {
+      flex: 0 0 33.333333333%;
+      max-width: 33.333333333%;
+    }
+
+    &-sm-5 {
+      flex: 0 0 41.6666666666%;
+      max-width: 41.6666666666%;
+    }
+
+    &-sm-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    &-sm-7 {
+      flex: 0 0 58.3333333%;
+      max-width: 58.3333333%;
+    }
+
+    &-sm-8 {
+      flex: 0 0 66.66666666%;
+      max-width: 66.66666666%;
+    }
+
+    &-sm-9 {
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+
+    &-sm-10 {
+      flex: 0 0 83.33333333%;
+      max-width: 83.33333333%;
+    }
+
+    &-sm-11 {
+      flex: 0 0 91.66666666%;
+      max-width: 91.66666666%;
+    }
+
+    &-sm-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  @include tablet {
+    &-md-1 {
+      flex: 0 0 8.333333333%;
+      max-width: 8.333333333%;
+    }
+
+    &-md-2 {
+      flex: 0 0 16.666666666%;
+      max-width: 16.666666666%;
+    }
+
+    &-md-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+
+    &-md-4 {
+      flex: 0 0 33.333333333%;
+      max-width: 33.333333333%;
+    }
+
+    &-md-5 {
+      flex: 0 0 41.6666666666%;
+      max-width: 41.6666666666%;
+    }
+
+    &-md-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    &-md-7 {
+      flex: 0 0 58.3333333%;
+      max-width: 58.3333333%;
+    }
+
+    &-md-8 {
+      flex: 0 0 66.66666666%;
+      max-width: 66.66666666%;
+    }
+
+    &-md-9 {
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+
+    &-md-10 {
+      flex: 0 0 83.33333333%;
+      max-width: 83.33333333%;
+    }
+
+    &-md-11 {
+      flex: 0 0 91.66666666%;
+      max-width: 91.66666666%;
+    }
+
+    &-md-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  @include laptop {
+    &-lg-1 {
+      flex: 0 0 8.333333333%;
+      max-width: 8.333333333%;
+    }
+
+    &-lg-2 {
+      flex: 0 0 16.666666666%;
+      max-width: 16.666666666%;
+    }
+
+    &-lg-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+
+    &-lg-4 {
+      flex: 0 0 33.333333333%;
+      max-width: 33.333333333%;
+    }
+
+    &-lg-5 {
+      flex: 0 0 41.6666666666%;
+      max-width: 41.6666666666%;
+    }
+
+    &-lg-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    &-lg-7 {
+      flex: 0 0 58.3333333%;
+      max-width: 58.3333333%;
+    }
+
+    &-lg-8 {
+      flex: 0 0 66.66666666%;
+      max-width: 66.66666666%;
+    }
+
+    &-lg-9 {
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+
+    &-lg-10 {
+      flex: 0 0 83.33333333%;
+      max-width: 83.33333333%;
+    }
+
+    &-lg-11 {
+      flex: 0 0 91.66666666%;
+      max-width: 91.66666666%;
+    }
+
+    &-lg-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  @include desktop {
+    &-xl-1 {
+      flex: 0 0 8.333333333%;
+      max-width: 8.333333333%;
+    }
+
+    &-xl-2 {
+      flex: 0 0 16.666666666%;
+      max-width: 16.666666666%;
+    }
+
+    &-xl-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+
+    &-xl-4 {
+      flex: 0 0 33.333333333%;
+      max-width: 33.333333333%;
+    }
+
+    &-xl-5 {
+      flex: 0 0 41.6666666666%;
+      max-width: 41.6666666666%;
+    }
+
+    &-xl-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    &-xl-7 {
+      flex: 0 0 58.3333333%;
+      max-width: 58.3333333%;
+    }
+
+    &-xl-8 {
+      flex: 0 0 66.66666666%;
+      max-width: 66.66666666%;
+    }
+
+    &-xl-9 {
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+
+    &-xl-10 {
+      flex: 0 0 83.33333333%;
+      max-width: 83.33333333%;
+    }
+
+    &-xl-11 {
+      flex: 0 0 91.66666666%;
+      max-width: 91.66666666%;
+    }
+
+    &-xl-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
   }
 }
 

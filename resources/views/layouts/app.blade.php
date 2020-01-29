@@ -18,44 +18,21 @@
       <!-- Styles -->
       <link href="{{ asset('css/main.css') }}" rel="stylesheet">
   </head>
-  <body>
+  <body class="sideNavBody">
     <header>
       <h2><a href="{{ url('/')}}" class="primary-logo"><strong>Property</strong>Management</a></h2>
-      <ul class="nav">
-        <li><a href="{{ url('/')}}">Home</a></li>
-        <li><a href="{{ url('/properties')}}">Properties</a></li>
-        <li><a href="#">Tenants</a></li>
-        <!-- Authentication Links -->
-        <div class="circle">
-          <i class="fas fa-user"></i>
-        </div>
-        @guest
-          <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
-          @if (Route::has('register'))
-            <li> <a href="{{ route('register') }}">{{ __('Register') }}</a></li>
-          @endif
-        @else
-          <li class="admin"><a href="{{ url('/home') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->name }}</a>
-
-          </li>
-          <li>
-            <a href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              @csrf
-            </form>
-          </li>
-        @endguest
-      </ul>
+        @include('includes.nav')
+      <a href="#" class="hamburger"><i class="fas fa-bars"></i><i class="fas fa-arrow-left"></i></a>
     </header>
 
       <main>
         @yield('content')
       </main>
     <script src="{{asset('js/jquery.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
     @yield('scripts')
   </body>
+  <div class="sideNav">
+    @include('includes.nav')
+  </div>
 </html>

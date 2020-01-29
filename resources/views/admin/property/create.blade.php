@@ -23,8 +23,8 @@
 
 
     <div class="form-group form-newState form-hidden">
-      {!!Form::label('state_new', 'New State: ')!!}
-      {!!Form::select('state_new', ['' => 'Choose Option'] + $statesList, null, ['class'=>'form-control'])!!}
+      {{-- {!!Form::label('state_new', 'New State: ')!!} --}}
+      {!!Form::select('state_new', ['' => 'Select State'] + $statesList, null, ['class'=>'form-control'])!!}
     </div>
 
     <div class="form-group">
@@ -38,8 +38,8 @@
       </select>
     </div>
     <div class="form-group form-newTown form-hidden">
-      {!!Form::label('town_new', 'New Town: ')!!}
-      {!!Form::text('town_new', null, ['class'=>'form-control'], )!!}
+      {{-- {!!Form::label('town_new', 'New Town: ')!!} --}}
+      {!!Form::text('town_new', null, ['class'=>'form-control', 'placeholder'=>'Town Name'], )!!}
     </div>
 
     <div class="form-group">
@@ -64,11 +64,11 @@
       {!!Form::label('pets', 'Pets: ')!!}
       {!!Form::select('pets', ['' => 'Choose Option'] + $pets, null, ['class'=>'form-control'])!!}
     </div>
-    <div class="form-group form-group-files">
+    <div class="form-group form-group-files" id="form-group-files">
       {!!Form::label('file', 'Gallery: ')!!}
 
       <div class="form-group-media">
-        <a class="btn btn-file" href="#">Add Images<input name="media[]" type="file" class="media" multiple></a>
+        <a class="btn btn-file" href="#form-group-files">Add Images<input name="media[]" type="file" class="media" multiple></a>
       </div>
       <div id="selectedFiles"></div>
     </div>
