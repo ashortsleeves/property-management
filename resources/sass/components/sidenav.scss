@@ -10,6 +10,9 @@
   transition: all 0.3s ease;
   overflow-y: auto;
   padding: 10px 0;
+  -webkit-box-shadow: -11px 0px 28px -19px rgba(0,0,0,0.75);
+  -moz-box-shadow: -11px 0px 28px -19px rgba(0,0,0,0.75);
+  box-shadow: -11px 0px 28px -19px rgba(0,0,0,0.75);
 
   a,
   span {
@@ -24,6 +27,18 @@
 
     @include desktop {
       #{$sideNavDirection}: -$sideNavWidth;
+    }
+  }
+
+  ul.nav {
+    li {
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .circle {
+      display: none;
     }
   }
 }

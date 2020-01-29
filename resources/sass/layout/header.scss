@@ -1,5 +1,9 @@
 @import "components/sidenav";
 
+a.current {
+  text-decoration: underline;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -55,6 +59,10 @@ header {
       @include laptop {
         padding: 0 15px;
       }
+
+      &.current {
+        text-decoration: underline;
+      }
     }
 
     .circle {
@@ -82,6 +90,11 @@ header {
     .fas {
       line-height: 1;
       font-size: 22px;
+      transition: 0.5s;
+    }
+
+    .fa-bars {
+      opacity: 1;
     }
 
     .fa-arrow-left {
@@ -92,10 +105,9 @@ header {
     }
 
     &.hamburger-active {
-      transform: rotate(180deg);
-
       .fa-arrow-left {
         opacity: 1;
+        transform: rotate(180deg);
       }
 
       .fa-bars {

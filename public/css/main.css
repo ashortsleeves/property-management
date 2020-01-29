@@ -536,6 +536,7 @@ ul {
   transition: all 0.3s ease;
   overflow-y: auto;
   padding: 10px 0;
+  box-shadow: -11px 0px 28px -19px rgba(0, 0, 0, 0.75);
 }
 
 .sideNav a,
@@ -556,6 +557,14 @@ ul {
   }
 }
 
+.sideNav ul.nav li a {
+  text-decoration: none;
+}
+
+.sideNav ul.nav .circle {
+  display: none;
+}
+
 /* classes applied to the body */
 
 .sideNavBody {
@@ -574,6 +583,10 @@ ul {
   .sideNavBody-push {
     right: 0;
   }
+}
+
+a.current {
+  text-decoration: underline;
 }
 
 header {
@@ -650,6 +663,10 @@ header ul.nav li {
   }
 }
 
+header ul.nav li.current {
+  text-decoration: underline;
+}
+
 header ul.nav .circle {
   border-radius: 45px;
   border: solid 2px #fff;
@@ -679,6 +696,12 @@ header a.hamburger {
 header a.hamburger .fas {
   line-height: 1;
   font-size: 22px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+header a.hamburger .fa-bars {
+  opacity: 1;
 }
 
 header a.hamburger .fa-arrow-left {
@@ -688,13 +711,10 @@ header a.hamburger .fa-arrow-left {
   top: 0;
 }
 
-header a.hamburger.hamburger-active {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-
 header a.hamburger.hamburger-active .fa-arrow-left {
   opacity: 1;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 header a.hamburger.hamburger-active .fa-bars {
@@ -879,6 +899,48 @@ form.login input.form-control {
 .listings-container {
   padding-top: 45px;
   padding-bottom: 60px;
+}
+
+.listings-container .row {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .listings-container .row {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+            flex-direction: row-reverse;
+  }
+}
+
+.listings-container .row a.mobile-filter {
+  position: absolute;
+  bottom: 100%;
+  right: 15px;
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .listings-container .row a.mobile-filter {
+    display: none;
+  }
+}
+
+.listings-container .row a.mobile-filter.hidden {
+  opacity: 0;
+}
+
+.listings-container .col-filter {
+  overflow: hidden;
+  -webkit-transition: height 0.3s ease-out;
+  transition: height 0.3s ease-out;
+  height: auto;
 }
 
 .listings-container .listings-single {

@@ -28,11 +28,11 @@
       <main>
         @yield('content')
       </main>
+      <div class="sideNav">
+        @include('includes.nav')
+      </div>
     <script src="{{asset('js/jquery.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
     @yield('scripts')
   </body>
-  <div class="sideNav">
-    @include('includes.nav')
-  </div>
 </html>

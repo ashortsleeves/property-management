@@ -1,5 +1,5 @@
 <ul class="nav">
-  <li><a href="{{ url('/')}}">Home</a></li>
+  <li><a href="{{ url('/')}}/">Home</a></li>
   <li><a href="{{ url('/properties')}}">Properties</a></li>
   <li><a href="#">Tenants</a></li>
   <!-- Authentication Links -->
