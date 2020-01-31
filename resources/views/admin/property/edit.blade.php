@@ -5,9 +5,8 @@
 @section('content')
 @include('includes.tinyeditor')
 
-
   <h1>Edit Property</h1>
-
+  <a class="btn btn-view-property" href="{{route('home.property', $property->slug)}}">View Property</a>
   {!! Form::model($property, ['method'=>'PATCH', 'action'=> [ 'AdminPropertyController@update', $property->id], 'files' => true])!!}
 
   {!! Form::open(['method'=>'POST', 'action'=> 'AdminPropertyController@store', 'files'=>true, 'autocomplete'=>"off"])!!}
@@ -24,7 +23,6 @@
 
 
     <div class="form-group form-newState form-hidden">
-      {{-- {!!Form::label('state_new', 'New State: ')!!} --}}
       {!!Form::select('state_new', ['' => 'Select State'] + $statesList, null, ['class'=>'form-control'])!!}
     </div>
 
@@ -39,7 +37,6 @@
       </select>
     </div>
     <div class="form-group form-newTown form-hidden">
-      {{-- {!!Form::label('town_new', 'New Town: ')!!} --}}
       {!!Form::text('town_new', null, ['class'=>'form-control', 'placeholder'=>'Town Name'], )!!}
     </div>
 

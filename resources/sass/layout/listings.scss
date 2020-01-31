@@ -32,7 +32,10 @@
   .col-filter {
     overflow:hidden;
     transition:height 0.3s ease-out;
-    height:auto;
+
+    @include tablet {
+      height: auto !important;
+    }
   }
 
   .listings-single {

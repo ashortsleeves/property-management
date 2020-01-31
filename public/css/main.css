@@ -940,7 +940,12 @@ form.login input.form-control {
   overflow: hidden;
   -webkit-transition: height 0.3s ease-out;
   transition: height 0.3s ease-out;
-  height: auto;
+}
+
+@media (min-width: 768px) {
+  .listings-container .col-filter {
+    height: auto !important;
+  }
 }
 
 .listings-container .listings-single {

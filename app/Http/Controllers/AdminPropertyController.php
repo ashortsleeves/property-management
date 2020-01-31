@@ -80,7 +80,8 @@ class AdminPropertyController extends Controller
         }
       }
 
-      return redirect('/admin/property');
+      Session::flash('message', 'property has been created!');
+      return redirect('/admin/property/'.$newProp->id.'/edit');
     }
 
     public function edit($id)

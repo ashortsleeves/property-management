@@ -53,8 +53,7 @@
       <div class="content">
         @if(Session::has('message'))
           <div class="alert">
-            <span>{{session('message')}}</span>
-
+            <span>{!!session('message')!!}</span>
           </div>
         @endif
         @yield('content')

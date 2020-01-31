@@ -1107,6 +1107,10 @@ ul.sidebar li.menu-item.active ul.submenu li a:focus {
   background-color: #efefef;
 }
 
+.btn-view-property {
+  margin-bottom: 15px;
+}
+
 form .form-group {
   margin-bottom: 15px;
 }
